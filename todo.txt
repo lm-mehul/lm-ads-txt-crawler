@@ -1,0 +1,19 @@
+- maintain kafka queue to store domains.
+- insert unique domains in kafka
+- create a thread pool for parsing.
+- Tracking Data
+      Uncrawled, crawled, Parsed and unparsed data.
+- store MD5 or similar hash in database.
+- use bloom filter check hash present.
+- avoid network calls, by storing file contents.
+- The re direction logic can cause time overhead (need optimization in future).
+
+
+populate and generate ads.txt and app-ads.txt files
+multithreading
+genrate hash
+use batching to insert ata in database
+proper error handling and logging
+Use batching to read data
+
+Open question - For isAdsTxtLinePresent, do we need to use all domains from DB or select domains from ads0txt-domains.txt file ?
