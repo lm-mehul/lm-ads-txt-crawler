@@ -22,6 +22,9 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
 		return
 	}
 
+	fmt.Println("Domains fetched from Database...")
+
+	log.Printf("hello : %v %v\n", len(domainsList), pageType)
 	// Define batch size and concurrency limit
 	batchSize := 1000      // Adjust as needed
 	concurrencyLimit := 10 // Adjust as needed
@@ -45,6 +48,7 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
 					continue
 				}
 				hash := utils.GenerateHash(adsTxtPage)
+
 				status, err := models.IsDomainCrawled(domain, string(hash), db)
 				if nil != err {
 					log.Printf("Error checking domain hash from DB for domain : %s: %v", domain, err)
@@ -74,6 +78,12 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
 			batch = batch[:0]
 		}
 	}
+
+	// Send the remaining domains if any
+	for _, domain := range batch {
+		domainCh <- domain
+	}
+
 	close(domainCh)
 
 	// Wait for workers to finish and collect results
@@ -93,7 +103,6 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
 	for _, record := range adsTxtParserList {
 		fmt.Println(record)
 	}
-
 }
 
 func lemmaDirectsAndResellerInventory(adsTxtPage string) []string {

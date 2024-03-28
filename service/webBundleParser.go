@@ -39,6 +39,11 @@ func webParser(db *sql.DB) {
 				log.Fatal("Failed to save bundles in DB")
 				continue
 			}
+			err = models.SaveUnCrawledDomainsInDB(db, bundles)
+			if nil != err {
+				log.Fatal("Failed to save bundles in DB")
+				continue
+			}
 
 			// Reset batch count and values
 			batchCount = 0
@@ -51,21 +56,25 @@ func webParser(db *sql.DB) {
 		if err != nil {
 			log.Printf("Error inserting %v bundles into database with error : %v", constant.BUNDLE_MOBILE_ANDROID, err)
 		}
+		err = models.SaveUnCrawledDomainsInDB(db, bundles)
+		if nil != err {
+			log.Fatal("Failed to save bundles in DB")
+		}
 	}
 }
 
 func extractDomainForWebParser(rawURL string) string {
 	parsedURL, err := url.Parse(rawURL)
 	if err != nil {
-		fmt.Printf("Error processing URL '%s': %s\n", rawURL, err)
+		log.Printf("Error processing URL '%s': %s\n", rawURL, err)
 		return ""
 	}
 
 	if strings.Contains(rawURL, "/") {
 		fmt.Printf("Parsed URL: %+v\n", parsedURL)
 		fmt.Printf("parsedURL.Host: %s\n", parsedURL.Host)
-		return parsedURL.Host
+		return strings.TrimSpace(parsedURL.Host)
 	}
 
-	return rawURL
+	return strings.TrimSpace(rawURL)
 }

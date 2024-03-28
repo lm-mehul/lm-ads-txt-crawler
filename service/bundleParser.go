@@ -118,7 +118,7 @@ func readCSVFile(db *sql.DB) error {
 func extractDomainFromBundleURL(urlStr string) string {
 	defer func() {
 		if r := recover(); r != nil {
-			fmt.Printf("Error processing URL '%s': %v\n", urlStr, r)
+			log.Printf("Error processing URL '%s': %v\n", urlStr, r)
 		}
 	}()
 
@@ -129,6 +129,6 @@ func extractDomainFromBundleURL(urlStr string) string {
 		}
 		return parsedURL.Hostname()
 	} else {
-		return urlStr
+		return strings.TrimSpace(urlStr)
 	}
 }

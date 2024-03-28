@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
-	"log"
 	"time"
 )
 
@@ -40,5 +39,5 @@ func (s *Service) Start() {
 	}
 
 	elapsed := time.Since(start)
-	log.Printf("Total execution time: %s\n", elapsed)
+	fmt.Printf("Total execution time: %s\n", elapsed)
 }

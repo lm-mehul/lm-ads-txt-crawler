@@ -69,6 +69,12 @@ func AdsTxtLineCheck(db *sql.DB, parserType string) {
 			batch = batch[:0]
 		}
 	}
+
+	// Send the remaining domains if any
+	for _, domain := range batch {
+		domainCh <- domain
+	}
+
 	close(domainCh)
 
 	// Wait for workers to finish and collect results
@@ -108,8 +114,6 @@ func IsAdsTxtLinePresent(domain, adsTxtPage string) []string {
 	pageResponse = strings.ReplaceAll(pageResponse, "\xa0", "")
 
 	present := make([]string, 0)
-
-	// fmt.Printf("\nhello :%v %v\n", domain, adsTxtLinesList)
 
 	for _, adsTxtLine := range adsTxtLinesList {
 		searchLine := strings.ReplaceAll(strings.ToLower(adsTxtLine), " ", "")

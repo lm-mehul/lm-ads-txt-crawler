@@ -1,10 +1,15 @@
 package models
 
-import "database/sql"
+import (
+	"bytes"
+	"database/sql"
+	"log"
+	"strings"
+)
 
 func GetDomainsFromDB(db *sql.DB, category string) ([]string, error) {
 	var bundles []string
-	query := "SELECT domain FROM crawled_bundles WHERE category = ? AND is_deleted = 0"
+	query := "SELECT domain FROM un_crawled_domains WHERE category = ? AND is_deleted = 0"
 	rows, err := db.Query(query, category)
 	if err != nil {
 		return bundles, err
@@ -22,6 +27,32 @@ func GetDomainsFromDB(db *sql.DB, category string) ([]string, error) {
 		return bundles, err
 	}
 	return bundles, nil
+}
+
+// SaveUnCrawledDomainsInDB inserts a bundle domain and category
+func SaveUnCrawledDomainsInDB(db *sql.DB, bundles []BundleInfo) error {
+	dbMutex.Lock()         // Lock the mutex before accessing the shared resource
+	defer dbMutex.Unlock() // Unlock the mutex when done, even if an error occurs
+
+	var buff bytes.Buffer
+	buff.WriteString("INSERT IGNORE INTO un_crawled_domains(domain, category) VALUES ")
+	values := make([]interface{}, 0)
+	validBundleCount := int64(0)
+	for index := range bundles {
+		values = append(values, strings.TrimSpace(bundles[index].Domain), bundles[index].Category)
+		validBundleCount++
+	}
+	placeholder := strings.Repeat("(?,?), ", int(validBundleCount))
+	if validBundleCount > 0 {
+		placeholder = placeholder[:len(placeholder)-2]
+	}
+	buff.WriteString(placeholder)
+	_, err := db.Exec(buff.String(), values...)
+	if err != nil {
+		log.Printf("Error executing crawled_bundles data insert: %v", err)
+		return err
+	}
+	return nil
 }
 
 func IsDomainCrawled(domainName string, hash string, db *sql.DB) (bool, error) {
