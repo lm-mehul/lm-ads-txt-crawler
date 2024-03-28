@@ -12,4 +12,4 @@ Ios - Integer Bundle Id
 CTV - Pixalate - aphanumeric Bundle_Id
 
 
-- ![Design Diagram](/resources/Design Diagrams/lm-ads-txt-crawler.jpg)
+- ![Design Diagram](/resources/Design%20Diagrams/lm-ads-txt-crawler.jpg)
