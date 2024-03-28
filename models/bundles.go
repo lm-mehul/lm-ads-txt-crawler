@@ -22,7 +22,7 @@ func SaveBundlesInDB(db *sql.DB, bundles []BundleInfo) error {
 	values := make([]any, 0)
 	validBundleCount := int64(0)
 	for index, _ := range bundles {
-		values = append(values, bundles[index].Bundle, bundles[index].Category)
+		values = append(values, strings.TrimSpace(bundles[index].Bundle), bundles[index].Category)
 		validBundleCount++
 	}
 	placeHolder := strings.Repeat("(?,?), ", int(validBundleCount))
@@ -46,11 +46,11 @@ func SaveCrawledBundlesInDB(db *sql.DB, bundles []BundleInfo) error {
 	defer dbMutex.Unlock() // Unlock the mutex when done, even if an error occurs
 
 	var buff bytes.Buffer
-	buff.WriteString("INSERT IGNORE INTO crawled_bundles (bundle, category, website, domain) VALUES ")
+	buff.WriteString("INSERT IGNORE INTO crawled_bundles(bundle, category, website, domain) VALUES ")
 	values := make([]interface{}, 0)
 	validBundleCount := int64(0)
 	for index := range bundles {
-		values = append(values, bundles[index].Bundle, bundles[index].Category, bundles[index].Website, bundles[index].Domain)
+		values = append(values, strings.TrimSpace(bundles[index].Bundle), bundles[index].Category, strings.TrimSpace(bundles[index].Website), strings.TrimSpace(bundles[index].Domain))
 		validBundleCount++
 	}
 	placeholder := strings.Repeat("(?,?,?,?), ", int(validBundleCount))

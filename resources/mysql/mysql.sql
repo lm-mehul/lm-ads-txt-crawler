@@ -29,10 +29,27 @@ CREATE TABLE `crawled_bundles` (
   UNIQUE KEY `bundle_category` (`bundle`,`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
+CREATE TABLE `un_crawled_domains` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `domain` varchar(512) DEFAULT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `ads_txt_page_hash` varchar(512) DEFAULT NULL,
+  `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_deleted` tinyint DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `domain_category` (`domain`,`category`)
+) ENGINE=InnoDB AUTO_INCREMENT=5510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
 mysql> select count(*) from bundles;
 -- +----------+
 -- | count(*) |
 -- +----------+
 -- |   108784 |
 -- +----------+
+
+
+ALTER TABLE crawled_bundles CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 

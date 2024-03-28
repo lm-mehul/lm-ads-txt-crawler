@@ -6,5 +6,5 @@ const (
 	BUNDLE_WEB            = "Web"
 	BUNDLE_MOBILE_IOS     = "Mobile App IOS"
 
-	BATCH_SIZE = 10
+	BATCH_SIZE = 800
 )

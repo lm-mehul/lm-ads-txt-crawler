@@ -17,3 +17,37 @@ proper error handling and logging
 Use batching to read data
 
 Open question - For isAdsTxtLinePresent, do we need to use all domains from DB or select domains from ads0txt-domains.txt file ?
+
+
+Add metrics - total fails/discarded
+minimize retries - by inserting domain as primary key
+
+
+
+
+
+Results :   28 March
+
+All parsers have finished.
+Bundle Adstxt Parser completed.
+Total execution time: 11m28.181921205s
+
+
+mysql> select count(*) from un_crawled_domains;
++----------+
+| count(*) |
++----------+
+|    22056 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from crawled_bundles;
++----------+
+| count(*) |
++----------+
+|    49287 |
++----------+
+1 row in set (0.01 sec)
+
+
+
