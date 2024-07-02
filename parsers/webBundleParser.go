@@ -1,4 +1,4 @@
-package service
+package parsers
 
 import (
 	"database/sql"
