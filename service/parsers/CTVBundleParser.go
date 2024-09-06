@@ -1,4 +1,4 @@
-package service
+package parsers
 
 import (
 	"bytes"
@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"strings"
-	"sync"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lemmamedia/ads-txt-crawler/constant"
@@ -25,40 +24,16 @@ type RequestItem struct {
 	Params    string `json:"params"`
 }
 
-func ctvBundleParser(db *sql.DB) {
-	ctvBundles, err := models.GetBundlesFromDB(db, constant.BUNDLE_CTV)
-	if err != nil {
-		log.Printf("Error fetching %v bundles from the database: %v", constant.BUNDLE_CTV, err)
-		return
-	}
+func CTVBundleParser(db *sql.DB) {
+
+	// ctvBundles, err := models.GetBundlesFromDB(db, constant.BUNDLE_CTV)
+	// if err != nil {
+	// 	log.Printf("Error fetching %v bundles from the database: %v", constant.BUNDLE_CTV, err)
+	// 	return
+	// }
 	fmt.Println("Executing CTV bundle parser...")
 
-	var wg sync.WaitGroup
-	batchSize := constant.BATCH_SIZE
-	numBatches := (len(ctvBundles) + batchSize - 1) / batchSize // Calculate number of batches
-
-	for i := 0; i < numBatches; i++ {
-		startIndex := i * batchSize
-		endIndex := (i + 1) * batchSize
-		if endIndex > len(ctvBundles) {
-			endIndex = len(ctvBundles)
-		}
-		batch := ctvBundles[startIndex:endIndex]
-
-		wg.Add(1)
-		go func(batch []string) {
-			defer wg.Done()
-			processCTVBatch(db, batch)
-		}(batch)
-	}
-
-	wg.Wait()
-
-	// Handle remaining bundles
-	if numBatches*batchSize < len(ctvBundles) {
-		remaining := ctvBundles[numBatches*batchSize:]
-		processCTVBatch(db, remaining)
-	}
+	processCTVBatch(db, models.CTVBundles)
 }
 
 func constructPayload(commonParams, ctvBundle string) (string, error) {
@@ -139,6 +114,7 @@ func processCTVBatch(db *sql.DB, batch []string) {
 					Domain:   extractDomainFromBundleURL(strings.TrimSpace(publisherWebsite)),
 				}
 				bundles = append(bundles, bundle)
+				fmt.Printf("CTV - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
 			} else {
 				utils.LogBundleError(ctvBundle, constant.BUNDLE_CTV, "Website Not Found")
 				continue
@@ -150,12 +126,12 @@ func processCTVBatch(db *sql.DB, batch []string) {
 	}
 
 	// Save bundles and uncrawled domains in the database
-	err := models.SaveCrawledBundlesInDB(db, bundles)
-	if err != nil {
-		log.Printf("Error saving bundles in database: %v\n", err)
-	}
-	err = models.SaveUnCrawledDomainsInDB(db, bundles)
-	if err != nil {
-		log.Fatal("Failed to save bundles in DB")
-	}
+	// err := models.SaveCrawledBundlesInDB(db, bundles)
+	// if err != nil {
+	// 	log.Printf("Error saving bundles in database: %v\n", err)
+	// }
+	// err = models.SaveUnCrawledDomainsInDB(db, bundles)
+	// if err != nil {
+	// 	log.Fatal("Failed to save bundles in DB")
+	// }
 }

@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"time"
+
+	"github.com/lemmamedia/ads-txt-crawler/service"
 )
 
 type Service struct {
@@ -16,8 +18,10 @@ func NewService(db *sql.DB) *Service {
 }
 
 func (s *Service) Start() {
+
 	start := time.Now()
 
+	service.BundleParser(s.db)
 	// switch *scriptType {
 	// case 1:
 	// 	BundleParser(s.db)

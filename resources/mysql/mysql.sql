@@ -1,55 +1,65 @@
-CREATE TABLE ads_txt_error_logs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    domain_name VARCHAR(255) NOT NULL,
-    error TEXT,
-    status_code INT
-);
 
-CREATE TABLE bundles (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    bundle VARCHAR(255),
-    category VARCHAR(255),
+1 . Failed Bundles :
+
+CREATE TABLE failed_bundles (
+    id INT NOT NULL AUTO_INCREMENT,
+    bundle VARCHAR(512) NOT NULL,
+    category VARCHAR(255) NOT NULL,
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    is_deleted TINYINT DEFAULT 0,
-    UNIQUE KEY bundle_category (bundle, category)
+    PRIMARY KEY (id),
+    UNIQUE KEY unique_bundle_category (bundle, category)
 );
 
-CREATE TABLE `crawled_bundles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `bundle` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `website` varchar(512) DEFAULT NULL,
-  `domain` varchar(512) DEFAULT NULL,
-  `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `is_deleted` tinyint DEFAULT '0',
-  `ads_txt_page_hash` varchar(512) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `bundle_category` (`bundle`,`category`)
-) ENGINE=InnoDB AUTO_INCREMENT=5510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
-CREATE TABLE `un_crawled_domains` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `domain` varchar(512) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `ads_txt_page_hash` varchar(512) DEFAULT NULL,
-  `creation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `is_deleted` tinyint DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `domain_category` (`domain`,`category`)
-) ENGINE=InnoDB AUTO_INCREMENT=5510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+2. Crawled Bundles :
+
+CREATE TABLE crawled_bundles (
+    id INT NOT NULL AUTO_INCREMENT,
+    bundle VARCHAR(512) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    website VARCHAR(512) NOT NULL,
+    domain VARCHAR(512) NOT NULL,
+    ads_txt_URL VARCHAR(512) NOT NULL,
+    app_ads_txt_URL VARCHAR(512) NOT NULL,
+    ads_txt_Hash VARCHAR(512),
+    app_ads_txt_Hash VARCHAR(512),
+    creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY unique_bundle_category (bundle, category)
+);
 
 
-mysql> select count(*) from bundles;
--- +----------+
--- | count(*) |
--- +----------+
--- |   108784 |
--- +----------+
+3. Lemma Entries :
+
+CREATE TABLE lemma_entries (
+    id INT NOT NULL AUTO_INCREMENT,
+    bundle VARCHAR(512) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    Lemma_Direct VARCHAR(120),
+    Lemma_Reseller VARCHAR(120),
+    creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
 
 
-ALTER TABLE crawled_bundles CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+4. Demand Table
 
+id int not null auto increment
+bundle    varchar(512) not null
+Category  varchar(255) not null
+demand columns - dynamic columns
+creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+
+5. Penetration insights Table :
+
+Inventory Type  
+Ios inventory int 
+android inventory int
+Web   inventory int
+CTV   inventory int
+
+example : 
+Lemma Direct | 75 | 45 | 32 | 23
+Lemma Reseller | 56 | 45 | 12 | 12
 

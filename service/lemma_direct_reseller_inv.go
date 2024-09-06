@@ -6,9 +6,6 @@ import (
 	"log"
 	"strings"
 	"sync"
-
-	"github.com/lemmamedia/ads-txt-crawler/models"
-	"github.com/lemmamedia/ads-txt-crawler/utils"
 )
 
 func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
@@ -47,17 +44,17 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB, parserType string) {
 					log.Printf("Error crawling domain %s: %v", domain, err)
 					continue
 				}
-				hash := utils.GenerateHash(adsTxtPage)
+				// hash := utils.GenerateHash(adsTxtPage)
 
-				status, err := models.IsDomainCrawled(domain, string(hash), db)
-				if nil != err {
-					log.Printf("Error checking domain hash from DB for domain : %s: %v", domain, err)
-					continue
-				}
-				if status {
-					log.Printf("Domain already crawled and no changes were there in ads txt page : %v", domain)
-					continue
-				}
+				// status, err := models.IsDomainCrawled(domain, string(hash), db)
+				// if nil != err {
+				// 	log.Printf("Error checking domain hash from DB for domain : %s: %v", domain, err)
+				// 	continue
+				// }
+				// if status {
+				// 	log.Printf("Domain already crawled and no changes were there in ads txt page : %v", domain)
+				// 	continue
+				// }
 				presenceList := lemmaDirectsAndResellerInventory(string(adsTxtPage))
 				adstxtSingleList = append(adstxtSingleList, presenceList...)
 				adsTxtParserList = append(adsTxtParserList, adstxtSingleList)

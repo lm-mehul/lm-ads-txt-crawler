@@ -1,4 +1,4 @@
-package service
+package parsers
 
 import (
 	"database/sql"
@@ -6,8 +6,8 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"strings"
-	"sync"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lemmamedia/ads-txt-crawler/constant"
@@ -16,40 +16,15 @@ import (
 	"golang.org/x/net/html"
 )
 
-func androidBundleParser(db *sql.DB) {
-	androidBundles, err := models.GetBundlesFromDB(db, constant.BUNDLE_MOBILE_ANDROID)
-	if err != nil {
-		log.Printf("Error fetching : %v bundles from database with error : %v", constant.BUNDLE_MOBILE_ANDROID, err)
-		return
-	}
+func AndroidBundleParser(db *sql.DB) {
+	// androidBundles, err := repository.GetBundlesFromDB(db, constant.BUNDLE_MOBILE_ANDROID)
+	// if err != nil {
+	// 	log.Printf("Error fetching : %v bundles from database with error : %v", constant.BUNDLE_MOBILE_ANDROID, err)
+	// 	return
+	// }
+
 	fmt.Println("Executing android bundle parser...")
-
-	var wg sync.WaitGroup
-	batchSize := constant.BATCH_SIZE
-	numBatches := (len(androidBundles) + batchSize - 1) / batchSize // Calculate number of batches
-	fmt.Printf("hello : %v \n", numBatches)
-	for i := 0; i < numBatches; i++ {
-		startIndex := i * batchSize
-		endIndex := (i + 1) * batchSize
-		if endIndex > len(androidBundles) {
-			endIndex = len(androidBundles)
-		}
-		batch := androidBundles[startIndex:endIndex]
-
-		wg.Add(1)
-		go func(batch []string) {
-			defer wg.Done()
-			processBatch(db, batch)
-		}(batch)
-	}
-
-	wg.Wait()
-
-	// Process remaining bundles
-	if numBatches*batchSize < len(androidBundles) {
-		remaining := androidBundles[numBatches*batchSize:]
-		processBatch(db, remaining)
-	}
+	processBatch(db, models.AndroidBundles)
 }
 
 func processBatch(db *sql.DB, batch []string) {
@@ -79,6 +54,7 @@ func processBatch(db *sql.DB, batch []string) {
 			bundle.Bundle = androidBundle
 			bundle.Category = constant.BUNDLE_MOBILE_ANDROID
 			bundle.Domain = extractDomainFromBundleURL(bundle.Website)
+			fmt.Printf("Android - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
 
 			bundles = append(bundles, bundle)
 		} else {
@@ -88,16 +64,16 @@ func processBatch(db *sql.DB, batch []string) {
 	}
 
 	// Save bundles in the database
-	err := models.SaveCrawledBundlesInDB(db, bundles)
-	if err != nil {
-		log.Printf("Error inserting bundles into database: %v", err)
-	}
+	// err := repository.SaveCrawledBundlesInDB(db, bundles)
+	// if err != nil {
+	// 	log.Printf("Error inserting bundles into database: %v", err)
+	// }
 
 	// Save uncrawled domains in the database
-	err = models.SaveUnCrawledDomainsInDB(db, bundles)
-	if err != nil {
-		log.Printf("Error saving uncrawled domains into database: %v", err)
-	}
+	// err = repository.SaveUnCrawledDomainsInDB(db, bundles)
+	// if err != nil {
+	// 	log.Printf("Error saving uncrawled domains into database: %v", err)
+	// }
 }
 
 func findWebsiteInHTML(body []byte, tagName, classVal string) string {
@@ -132,4 +108,22 @@ func findWebsiteInHTML(body []byte, tagName, classVal string) string {
 		return ""
 	}
 	return website
+}
+
+func extractDomainFromBundleURL(urlStr string) string {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Printf("Error processing URL '%s': %v\n", urlStr, r)
+		}
+	}()
+
+	if strings.Contains(urlStr, "/") {
+		parsedURL, err := url.Parse(urlStr)
+		if err != nil {
+			panic(err)
+		}
+		return parsedURL.Hostname()
+	} else {
+		return strings.TrimSpace(urlStr)
+	}
 }

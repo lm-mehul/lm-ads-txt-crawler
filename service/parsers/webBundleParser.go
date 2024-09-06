@@ -1,4 +1,4 @@
-package service
+package parsers
 
 import (
 	"database/sql"
@@ -12,17 +12,12 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/models"
 )
 
-func webParser(db *sql.DB) {
-	webBundles, err := models.GetBundlesFromDB(db, constant.BUNDLE_WEB)
-	if err != nil {
-		log.Printf("Error fetching : %v bundles from database with error : %v", constant.BUNDLE_WEB, err)
-		return
-	}
+func WebParser(db *sql.DB) {
 
 	fmt.Println("Executing Web bundle parser...")
 	var bundles []models.BundleInfo
 	var bundle models.BundleInfo
-	batchCount := 0
+	webBundles := []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}
 
 	for _, webBundle := range webBundles {
 		bundle.Bundle = webBundle
@@ -30,36 +25,7 @@ func webParser(db *sql.DB) {
 		bundle.Domain = extractDomainForWebParser(webBundle)
 
 		bundles = append(bundles, bundle)
-		batchCount++
 
-		// If batch size is reached, insert the batch into the database
-		if batchCount == constant.BATCH_SIZE {
-			err := models.SaveCrawledBundlesInDB(db, bundles)
-			if nil != err {
-				log.Fatal("Failed to save bundles in DB")
-				continue
-			}
-			err = models.SaveUnCrawledDomainsInDB(db, bundles)
-			if nil != err {
-				log.Fatal("Failed to save bundles in DB")
-				continue
-			}
-
-			// Reset batch count and values
-			batchCount = 0
-			bundles = []models.BundleInfo{}
-		}
-	}
-	// Insert the remaining batch
-	if batchCount > 0 {
-		err = models.SaveCrawledBundlesInDB(db, bundles)
-		if err != nil {
-			log.Printf("Error inserting %v bundles into database with error : %v", constant.BUNDLE_MOBILE_ANDROID, err)
-		}
-		err = models.SaveUnCrawledDomainsInDB(db, bundles)
-		if nil != err {
-			log.Fatal("Failed to save bundles in DB")
-		}
 	}
 }
 
