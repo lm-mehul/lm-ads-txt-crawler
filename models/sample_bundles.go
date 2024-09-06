@@ -257,3 +257,5 @@ var CTVBundles = []string{
 	"B07ZH2QBZQ",
 	"com.comcast.sortit",
 }
+
+var WebBundles = []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}

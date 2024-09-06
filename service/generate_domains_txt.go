@@ -2,25 +2,10 @@ package service
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 
 	"github.com/lemmamedia/ads-txt-crawler/utils"
 )
-
-func GenerateDomainTxt(db *sql.DB) {
-	fmt.Println("Fetching domains from Database...")
-	_, _, err := FetchDomains(db, "ads")
-	if nil != err {
-		log.Printf("Error fetching domains from database with error : %v", err)
-		return
-	}
-	_, _, err = FetchDomains(db, "app-ads")
-	if nil != err {
-		log.Printf("Error fetching domains from database with error : %v", err)
-		return
-	}
-}
 
 func FetchDomains(db *sql.DB, parserType string) ([]string, string, error) {
 	var domainFileName, pageType string
@@ -28,7 +13,6 @@ func FetchDomains(db *sql.DB, parserType string) ([]string, string, error) {
 	if parserType == "app-ads" {
 		domainFileName = "app-ads_txt_domains.txt"
 		pageType = "app-ads.txt"
-
 	} else {
 		domainFileName = "ads_txt_domains.txt"
 		pageType = "ads.txt"

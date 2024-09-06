@@ -1,4 +1,4 @@
-package service
+package handler
 
 import (
 	"database/sql"
@@ -20,7 +20,7 @@ func BundleParser(db *sql.DB) {
 	// domains := []string{"americasvoicenews.com", "americasvoice.news", "www.paltalk.com"}
 
 	// for i, domain := range domains {
-	// 	adsTxtPage, err := crawlDomain(domain, "ads.txt")
+	// 	adsTxtPage, err := CrawlDomain(domain, "ads.txt")
 	// 	if err != nil {
 	// 		log.Printf("Error crawling domain %s: %v", domain, err)
 	// 	}

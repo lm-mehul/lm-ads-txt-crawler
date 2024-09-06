@@ -43,7 +43,7 @@ func AdsTxtLineCheck(db *sql.DB, parserType string) {
 
 			for domain := range domainCh {
 				adstxtSingleList := []string{domain}
-				adsTxtPage, err := crawlDomain(domain, parserType)
+				adsTxtPage, _, err := CrawlDomain(domain, parserType)
 				if err != nil {
 					log.Printf("Error crawling domain %s: %v", domain, err)
 					continue

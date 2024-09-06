@@ -12,21 +12,18 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/models"
 )
 
-func WebParser(db *sql.DB) {
+// webBundles := []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}
 
+func ProcessWebBundle(db *sql.DB, webBundle string) models.BundleInfo {
 	fmt.Println("Executing Web bundle parser...")
-	var bundles []models.BundleInfo
+
 	var bundle models.BundleInfo
-	webBundles := []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}
 
-	for _, webBundle := range webBundles {
-		bundle.Bundle = webBundle
-		bundle.Category = constant.BUNDLE_WEB
-		bundle.Domain = extractDomainForWebParser(webBundle)
+	bundle.Bundle = webBundle
+	bundle.Category = constant.BUNDLE_WEB
+	bundle.Domain = extractDomainForWebParser(webBundle)
 
-		bundles = append(bundles, bundle)
-
-	}
+	return bundle
 }
 
 func extractDomainForWebParser(rawURL string) string {

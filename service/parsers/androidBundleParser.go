@@ -12,68 +12,48 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lemmamedia/ads-txt-crawler/constant"
 	"github.com/lemmamedia/ads-txt-crawler/models"
-	"github.com/lemmamedia/ads-txt-crawler/utils"
 	"golang.org/x/net/html"
 )
 
 func AndroidBundleParser(db *sql.DB) {
-	// androidBundles, err := repository.GetBundlesFromDB(db, constant.BUNDLE_MOBILE_ANDROID)
-	// if err != nil {
-	// 	log.Printf("Error fetching : %v bundles from database with error : %v", constant.BUNDLE_MOBILE_ANDROID, err)
-	// 	return
-	// }
-
 	fmt.Println("Executing android bundle parser...")
-	processBatch(db, models.AndroidBundles)
+	ProcessAndroidBundle(db, models.AndroidBundles[0])
 }
 
-func processBatch(db *sql.DB, batch []string) {
-	var bundles []models.BundleInfo
+func ProcessAndroidBundle(db *sql.DB, androidBundle string) models.BundleInfo {
 	var bundle models.BundleInfo
-	for _, androidBundle := range batch {
-		playStoreURL := fmt.Sprintf("https://play.google.com/store/apps/details?id=%s&hl=en", androidBundle)
-		response, err := http.Get(playStoreURL)
+
+	playStoreURL := fmt.Sprintf("https://play.google.com/store/apps/details?id=%s&hl=en", androidBundle)
+	response, err := http.Get(playStoreURL)
+	if err != nil {
+		// utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Invalid Google Bundle")
+		return bundle
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode == 200 {
+		body, err := io.ReadAll(response.Body)
 		if err != nil {
-			utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Invalid Google Bundle")
-			continue
+			// log.Printf("Error reading response body: %v", err)
+			return bundle
 		}
-		defer response.Body.Close()
 
-		if response.StatusCode == 200 {
-			body, err := io.ReadAll(response.Body)
-			if err != nil {
-				log.Printf("Error reading response body: %v", err)
-				continue
-			}
-
-			bundle.Website = strings.TrimSpace(findWebsiteInHTML(body, "a", "Si6A0c RrSxVb"))
-			if bundle.Website == "" {
-				utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Website not found in parser html response.")
-				continue
-			}
-			bundle.Bundle = androidBundle
-			bundle.Category = constant.BUNDLE_MOBILE_ANDROID
-			bundle.Domain = extractDomainFromBundleURL(bundle.Website)
-			fmt.Printf("Android - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
-
-			bundles = append(bundles, bundle)
-		} else {
-			utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Bundle not in Google Playstore")
-			continue
+		bundle.Website = strings.TrimSpace(findWebsiteInHTML(body, "a", "Si6A0c RrSxVb"))
+		if bundle.Website == "" {
+			// utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Website not found in parser html response.")
+			return bundle
 		}
+
+		bundle.Bundle = androidBundle
+		bundle.Category = constant.BUNDLE_MOBILE_ANDROID
+		bundle.Domain = extractDomainFromBundleURL(bundle.Website)
+
+		fmt.Printf("Android - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
+		return bundle
+	} else {
+		return bundle
 	}
 
-	// Save bundles in the database
-	// err := repository.SaveCrawledBundlesInDB(db, bundles)
-	// if err != nil {
-	// 	log.Printf("Error inserting bundles into database: %v", err)
-	// }
-
-	// Save uncrawled domains in the database
-	// err = repository.SaveUnCrawledDomainsInDB(db, bundles)
-	// if err != nil {
-	// 	log.Printf("Error saving uncrawled domains into database: %v", err)
-	// }
 }
 
 func findWebsiteInHTML(body []byte, tagName, classVal string) string {
