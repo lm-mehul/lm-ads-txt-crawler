@@ -2,6 +2,7 @@ package parsers
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -15,43 +16,34 @@ import (
 	"golang.org/x/net/html"
 )
 
-func AndroidBundleParser(db *sql.DB) {
-	fmt.Println("Executing android bundle parser...")
-	ProcessAndroidBundle(db, models.AndroidBundles[0])
-}
-
-func ProcessAndroidBundle(db *sql.DB, androidBundle string) models.BundleInfo {
+func ProcessAndroidBundle(db *sql.DB, androidBundle string) (models.BundleInfo, error) {
 	var bundle models.BundleInfo
 
 	playStoreURL := fmt.Sprintf("https://play.google.com/store/apps/details?id=%s&hl=en", androidBundle)
 	response, err := http.Get(playStoreURL)
 	if err != nil {
-		// utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Invalid Google Bundle")
-		return bundle
+		return bundle, errors.New("Invalid Google Bundle")
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode == 200 {
 		body, err := io.ReadAll(response.Body)
 		if err != nil {
-			// log.Printf("Error reading response body: %v", err)
-			return bundle
+			return bundle, errors.New("Error reading response body")
 		}
 
 		bundle.Website = strings.TrimSpace(findWebsiteInHTML(body, "a", "Si6A0c RrSxVb"))
 		if bundle.Website == "" {
-			// utils.LogBundleError(androidBundle, constant.BUNDLE_MOBILE_ANDROID, "Website not found in parser html response.")
-			return bundle
+			return bundle, errors.New("Website not found in parser html response")
 		}
 
 		bundle.Bundle = androidBundle
 		bundle.Category = constant.BUNDLE_MOBILE_ANDROID
 		bundle.Domain = extractDomainFromBundleURL(bundle.Website)
 
-		fmt.Printf("Android - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
-		return bundle
+		return bundle, nil
 	} else {
-		return bundle
+		return bundle, errors.New("Invalid Google Bundle")
 	}
 
 }

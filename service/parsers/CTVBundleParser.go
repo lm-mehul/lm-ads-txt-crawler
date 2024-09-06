@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"database/sql"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strings"
@@ -11,15 +12,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lemmamedia/ads-txt-crawler/constant"
 	"github.com/lemmamedia/ads-txt-crawler/models"
-	"github.com/lemmamedia/ads-txt-crawler/utils"
 )
 
-func CTVBundleParser(db *sql.DB) {
-	fmt.Println("Executing CTV bundle parser...")
-	ProcessCTVBundle(db, models.CTVBundles[0])
-}
-
-func ProcessCTVBundle(db *sql.DB, ctvBundle string) models.BundleInfo {
+func ProcessCTVBundle(db *sql.DB, ctvBundle string) (models.BundleInfo, error) {
 
 	var bundle models.BundleInfo
 	algoliaURL := `https://awy63wpylf-1.algolianet.com/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.14.2)%3B%20Browser%20(lite)%3B%20angular%20(12.0.5)%3B%20angular-instantsearch%20(4.3.0)%3B%20instantsearch.js%20(4.44.0)%3B%20JS%20Helper%20(3.11.0)&x-algolia-api-key=471f4e22aa833a11ef213cd30c540344&x-algolia-application-id=AWY63WPYLF`
@@ -27,28 +22,23 @@ func ProcessCTVBundle(db *sql.DB, ctvBundle string) models.BundleInfo {
 
 	payload, err := constructPayload(commonParams, ctvBundle)
 	if err != nil {
-		// log.Printf("Error creating payload request for bundle %s: %v\n", ctvBundle, err)
-		return bundle
+		return bundle, errors.New("Error creating payload request")
 	}
 
 	headers := map[string]string{"Content-Type": "text/plain"}
 	response, err := postData(algoliaURL, payload, headers)
 	if err != nil {
-		// log.Printf("Error making request for bundle %s: %v\n", ctvBundle, err)
-		return bundle
+		return bundle, errors.New("Error making request")
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
-		// log.Printf("Error: %d, %s\n", response.StatusCode, response.Status)
-		// utils.LogBundleError(ctvBundle, constant.BUNDLE_CTV, "Website Not Found")
-		return bundle
+		return bundle, errors.New("HTTP request failed")
 	}
 
 	var jsonResponse map[string]interface{}
 	if err := json.NewDecoder(response.Body).Decode(&jsonResponse); err != nil {
-		// log.Printf("Error decoding JSON response for bundle %s: %v\n", ctvBundle, err)
-		return bundle
+		return bundle, errors.New("Error decoding JSON response")
 	}
 
 	hits := jsonResponse["results"].([]interface{})[0].(map[string]interface{})["hits"].([]interface{})
@@ -61,15 +51,12 @@ func ProcessCTVBundle(db *sql.DB, ctvBundle string) models.BundleInfo {
 			bundle.Category = constant.BUNDLE_CTV
 			bundle.Domain = extractDomainFromBundleURL(strings.TrimSpace(publisherWebsite))
 
-			fmt.Printf("CTV - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
-			return bundle
+			return bundle, nil
 		} else {
-			utils.LogBundleError(ctvBundle, constant.BUNDLE_CTV, "Website Not Found")
-			return bundle
+			return bundle, errors.New("Website not found in response")
 		}
 	} else {
-		utils.LogBundleError(ctvBundle, constant.BUNDLE_CTV, "Website Not Found")
-		return bundle
+		return bundle, errors.New("Website not found in response")
 	}
 }
 

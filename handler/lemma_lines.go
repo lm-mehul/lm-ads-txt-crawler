@@ -2,9 +2,11 @@ package handler
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 
 	"github.com/lemmamedia/ads-txt-crawler/constant"
+	"github.com/lemmamedia/ads-txt-crawler/logger"
 	"github.com/lemmamedia/ads-txt-crawler/models"
 	"github.com/lemmamedia/ads-txt-crawler/repository"
 	"github.com/lemmamedia/ads-txt-crawler/service"
@@ -34,141 +36,202 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB) {
 		// 	continue
 		// }
 
-		// (ios, android,CTV) bundle
+		isCrawled := 0
 
 		switch bundle.Category {
 		case constant.BUNDLE_MOBILE_ANDROID:
-			fetchedBundle := parsers.ProcessAndroidBundle(db, bundle.Bundle)
-			if fetchedBundle.Domain == "" {
-				adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AdsTxtURL = url
-					bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
-				}
-
-				appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AppAdsTxtURL = url
-					bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
-				}
-
-			} else {
+			fetchedBundle, err := parsers.ProcessAndroidBundle(db, bundle.Bundle)
+			if err != nil {
+				logger.Info(bundle.Bundle, constant.BUNDLE_MOBILE_ANDROID, err.Error())
 				failedBundles = append(failedBundles, bundle)
+			} else {
+				if fetchedBundle.Domain == "" {
+					adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AdsTxtURL = url
+						bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
+					}
+
+					appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AppAdsTxtURL = url
+						bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
+					}
+
+					if isCrawled > 0 {
+						crawledBundles = append(crawledBundles, bundle)
+					} else {
+						failedBundles = append(failedBundles, bundle)
+					}
+				} else {
+					failedBundles = append(failedBundles, bundle)
+				}
 			}
 
 		case constant.BUNDLE_MOBILE_IOS:
-			fetchedBundle := parsers.ProcessIOSBundle(db, bundle.Bundle)
-			if fetchedBundle.Domain == "" {
-				adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AdsTxtURL = url
-					bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
-				}
-
-				appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AppAdsTxtURL = url
-					bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
-				}
-
-			} else {
+			fetchedBundle, err := parsers.ProcessIOSBundle(db, bundle.Bundle)
+			if err != nil {
+				logger.Info(bundle.Bundle, constant.BUNDLE_MOBILE_IOS, err.Error())
 				failedBundles = append(failedBundles, bundle)
+			} else {
+				if fetchedBundle.Domain == "" {
+					adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AdsTxtURL = url
+						bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
+					}
+
+					appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AppAdsTxtURL = url
+						bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
+					}
+
+					if isCrawled > 0 {
+						crawledBundles = append(crawledBundles, bundle)
+					} else {
+						failedBundles = append(failedBundles, bundle)
+					}
+				} else {
+					failedBundles = append(failedBundles, bundle)
+				}
 			}
 		case constant.BUNDLE_CTV:
-			fetchedBundle := parsers.ProcessCTVBundle(db, bundle.Bundle)
-			if fetchedBundle.Domain == "" {
-				adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AdsTxtURL = url
-					bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
-				}
-
-				appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AppAdsTxtURL = url
-					bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
-				}
-
-			} else {
+			fetchedBundle, err := parsers.ProcessCTVBundle(db, bundle.Bundle)
+			if err != nil {
+				logger.Info(bundle.Bundle, constant.BUNDLE_CTV, err.Error())
 				failedBundles = append(failedBundles, bundle)
+			} else {
+				if fetchedBundle.Domain == "" {
+					adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AdsTxtURL = url
+						bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
+					}
+
+					appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+					} else {
+						isCrawled++
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AppAdsTxtURL = url
+						bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
+					}
+
+					if isCrawled > 0 {
+						crawledBundles = append(crawledBundles, bundle)
+					} else {
+						failedBundles = append(failedBundles, bundle)
+					}
+
+				} else {
+					failedBundles = append(failedBundles, bundle)
+				}
 			}
 		case constant.BUNDLE_WEB:
-			fetchedBundle := parsers.ProcessWebBundle(db, bundle.Bundle)
-			if fetchedBundle.Domain == "" {
-				adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
-				} else {
-					presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
-
-					presenceList.Bundle = fetchedBundle.Bundle
-					presenceList.Category = fetchedBundle.Category
-
-					lemmaLines = append(lemmaLines, presenceList)
-
-					bundle.AdsTxtURL = url
-					bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
-				}
-
-			} else {
+			fetchedBundle, err := parsers.ProcessWebBundle(db, bundle.Bundle)
+			if err != nil {
+				logger.Info(bundle.Bundle, constant.BUNDLE_CTV, err.Error())
 				failedBundles = append(failedBundles, bundle)
+			} else {
+				if fetchedBundle.Domain == "" {
+					adsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.ADS_TXT_pageType)
+					if err != nil {
+						log.Printf("Error crawling domain %s: %v", fetchedBundle.Domain, err)
+						failedBundles = append(failedBundles, bundle)
+					} else {
+
+						fmt.Printf("Crawled domain: %s\n", fetchedBundle.Domain)
+
+						presenceList := service.LemmaDirectsAndResellerInventory(string(adsTxtPage))
+
+						presenceList.Bundle = fetchedBundle.Bundle
+						presenceList.Category = fetchedBundle.Category
+
+						lemmaLines = append(lemmaLines, presenceList)
+
+						bundle.AdsTxtURL = url
+						bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
+
+						crawledBundles = append(crawledBundles, bundle)
+					}
+
+				} else {
+					failedBundles = append(failedBundles, bundle)
+				}
 			}
 		default:
-			// log.Printf("Invalid bundle category: %v", bundle.Category)
+			logger.Info(bundle.Bundle, constant.BUNDLE_CTV, "Invalid bundle category")
+			failedBundles = append(failedBundles, bundle)
 		}
 	}
 
@@ -187,6 +250,10 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB) {
 		log.Printf("Error saving lemma lines in DB: %v", err)
 	}
 
+	fmt.Printf("Total bundles: %d\n", len(tempBundles))
+	fmt.Printf("Total crawled bundles: %d\n", len(crawledBundles))
+	fmt.Printf("Total failed bundles: %d\n", len(failedBundles))
+	fmt.Printf("Total lemma lines: %d\n", len(lemmaLines))
 }
 
 func populateBundles() {

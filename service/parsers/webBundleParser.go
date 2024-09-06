@@ -2,8 +2,7 @@ package parsers
 
 import (
 	"database/sql"
-	"fmt"
-	"log"
+	"errors"
 	"net/url"
 	"strings"
 
@@ -14,30 +13,30 @@ import (
 
 // webBundles := []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}
 
-func ProcessWebBundle(db *sql.DB, webBundle string) models.BundleInfo {
-	fmt.Println("Executing Web bundle parser...")
+func ProcessWebBundle(db *sql.DB, webBundle string) (models.BundleInfo, error) {
 
 	var bundle models.BundleInfo
+	var err error
 
 	bundle.Bundle = webBundle
 	bundle.Category = constant.BUNDLE_WEB
-	bundle.Domain = extractDomainForWebParser(webBundle)
+	bundle.Domain, err = extractDomainForWebParser(webBundle)
+	if err != nil {
+		return bundle, errors.New("Error extracting domain for web parser")
+	}
 
-	return bundle
+	return bundle, nil
 }
 
-func extractDomainForWebParser(rawURL string) string {
+func extractDomainForWebParser(rawURL string) (string, error) {
 	parsedURL, err := url.Parse(rawURL)
 	if err != nil {
-		log.Printf("Error processing URL '%s': %s\n", rawURL, err)
-		return ""
+		return "", errors.New("Error processing URL")
 	}
 
 	if strings.Contains(rawURL, "/") {
-		fmt.Printf("Parsed URL: %+v\n", parsedURL)
-		fmt.Printf("parsedURL.Host: %s\n", parsedURL.Host)
-		return strings.TrimSpace(parsedURL.Host)
+		return strings.TrimSpace(parsedURL.Host), nil
 	}
 
-	return strings.TrimSpace(rawURL)
+	return strings.TrimSpace(rawURL), nil
 }

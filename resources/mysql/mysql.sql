@@ -1,3 +1,14 @@
+0
+
+CREATE TABLE bundles (
+    id INT NOT NULL AUTO_INCREMENT,
+    bundle VARCHAR(512) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY unique_bundle_category (bundle, category)
+);
+
 
 1 . Failed Bundles :
 
@@ -35,8 +46,8 @@ CREATE TABLE lemma_entries (
     id INT NOT NULL AUTO_INCREMENT,
     bundle VARCHAR(512) NOT NULL,
     category VARCHAR(255) NOT NULL,
-    Lemma_Direct VARCHAR(120),
-    Lemma_Reseller VARCHAR(120),
+    Lemma_Direct TEXT, 
+    Lemma_Reseller TEXT, 
     creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );

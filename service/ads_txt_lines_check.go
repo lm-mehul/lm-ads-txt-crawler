@@ -3,10 +3,8 @@ package service
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"os"
 	"strings"
-	"sync"
 
 	"github.com/lemmamedia/ads-txt-crawler/utils"
 )
@@ -17,88 +15,88 @@ func AdsTxtLineCheck(db *sql.DB, parserType string) {
 	fmt.Println("Executing adstxt parser...")
 	fmt.Println("Fetching domains from Database...")
 
-	domainsList, pageType, err := FetchDomains(db, parserType)
-	if err != nil {
-		log.Printf("Error fetching domains from database: %v", err)
-		return
-	}
+	// domainsList, pageType, err := FetchDomains(db, parserType)
+	// if err != nil {
+	// 	log.Printf("Error fetching domains from database: %v", err)
+	// 	return
+	// }
 
-	presentDomains = make([]string, 0)
-	fmt.Println("Page type:", pageType)
+	// presentDomains = make([]string, 0)
+	// fmt.Println("Page type:", pageType)
 
-	// Define batch size and concurrency limit
-	batchSize := 1000      // Adjust as needed
-	concurrencyLimit := 10 // Adjust as needed
+	// // Define batch size and concurrency limit
+	// batchSize := 1000      // Adjust as needed
+	// concurrencyLimit := 10 // Adjust as needed
 
-	var wg sync.WaitGroup
-	domainCh := make(chan string, batchSize)
-	resultCh := make(chan [][]string, 10) // Buffer result channel
+	// var wg sync.WaitGroup
+	// domainCh := make(chan string, batchSize)
+	// resultCh := make(chan [][]string, 10) // Buffer result channel
 
-	// Start workers
-	for i := 0; i < concurrencyLimit; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			var adsTxtParserList [][]string
+	// // Start workers
+	// for i := 0; i < concurrencyLimit; i++ {
+	// 	wg.Add(1)
+	// 	go func() {
+	// 		defer wg.Done()
+	// 		var adsTxtParserList [][]string
 
-			for domain := range domainCh {
-				adstxtSingleList := []string{domain}
-				adsTxtPage, _, err := CrawlDomain(domain, parserType)
-				if err != nil {
-					log.Printf("Error crawling domain %s: %v", domain, err)
-					continue
-				}
-				presenceList := IsAdsTxtLinePresent(domain, string(adsTxtPage))
-				adstxtSingleList = append(adstxtSingleList, presenceList...)
-				adsTxtParserList = append(adsTxtParserList, adstxtSingleList)
-				presentDomains = append(presentDomains, domain)
-			}
+	// 		for domain := range domainCh {
+	// 			adstxtSingleList := []string{domain}
+	// 			adsTxtPage, _, err := CrawlDomain(domain, parserType)
+	// 			if err != nil {
+	// 				log.Printf("Error crawling domain %s: %v", domain, err)
+	// 				continue
+	// 			}
+	// 			presenceList := IsAdsTxtLinePresent(domain, string(adsTxtPage))
+	// 			adstxtSingleList = append(adstxtSingleList, presenceList...)
+	// 			adsTxtParserList = append(adsTxtParserList, adstxtSingleList)
+	// 			presentDomains = append(presentDomains, domain)
+	// 		}
 
-			resultCh <- adsTxtParserList
-		}()
-	}
+	// 		resultCh <- adsTxtParserList
+	// 	}()
+	// }
 
-	// Send domains to workers in batches
-	batch := make([]string, 0, batchSize)
-	for _, domain := range domainsList {
-		batch = append(batch, domain)
-		if len(batch) == batchSize {
-			for _, domain := range batch {
-				domainCh <- domain
-			}
-			batch = batch[:0]
-		}
-	}
+	// // Send domains to workers in batches
+	// batch := make([]string, 0, batchSize)
+	// for _, domain := range domainsList {
+	// 	batch = append(batch, domain)
+	// 	if len(batch) == batchSize {
+	// 		for _, domain := range batch {
+	// 			domainCh <- domain
+	// 		}
+	// 		batch = batch[:0]
+	// 	}
+	// }
 
-	// Send the remaining domains if any
-	for _, domain := range batch {
-		domainCh <- domain
-	}
+	// // Send the remaining domains if any
+	// for _, domain := range batch {
+	// 	domainCh <- domain
+	// }
 
-	close(domainCh)
+	// close(domainCh)
 
-	// Wait for workers to finish and collect results
-	go func() {
-		wg.Wait()
-		close(resultCh)
-	}()
+	// // Wait for workers to finish and collect results
+	// go func() {
+	// 	wg.Wait()
+	// 	close(resultCh)
+	// }()
 
-	// Collect results from workers
-	var adsTxtParserList [][]string
-	for result := range resultCh {
-		adsTxtParserList = append(adsTxtParserList, result...)
-	}
+	// // Collect results from workers
+	// var adsTxtParserList [][]string
+	// for result := range resultCh {
+	// 	adsTxtParserList = append(adsTxtParserList, result...)
+	// }
 
-	// Display the data in adsTxtParserList
-	fmt.Println("AdsTxtParserList:")
-	for _, record := range adsTxtParserList {
-		fmt.Println(record)
-	}
-	// Display the data in adsTxtParserList
-	fmt.Println("Domains :")
-	for _, record := range presentDomains {
-		fmt.Println(record)
-	}
+	// // Display the data in adsTxtParserList
+	// fmt.Println("AdsTxtParserList:")
+	// for _, record := range adsTxtParserList {
+	// 	fmt.Println(record)
+	// }
+	// // Display the data in adsTxtParserList
+	// fmt.Println("Domains :")
+	// for _, record := range presentDomains {
+	// 	fmt.Println(record)
+	// }
 }
 
 func IsAdsTxtLinePresent(domain, adsTxtPage string) []string {

@@ -21,14 +21,20 @@ func (s *Service) Start() {
 
 	start := time.Now()
 
-	handler.FetchLemmaDirectsAndResellerInventory(s.db)
 	// switch *scriptType {
 	// case 1:
 	// 	AdsTxtLineCheck(s.db, "ads")
 	// case 2:
 	// 	AdsTxtLineCheck(s.db, "app-ads")
+	// case 3:
+	handler.FetchLemmaDirectsAndResellerInventory(s.db)
 	// case 4:
-	// 	FetchLemmaDirectsAndResellerInventory(s.db)
+	//    BundlePArser(s.db)
+	// case 5:
+	//  generate Report
+	// case 6:
+	// populate bundle data
+	// handler.PopulateBundles(s.db)
 	// default:
 	// 	fmt.Println("Invalid script_type. Please provide 1 or 2.")
 	// 	fmt.Println("Run script in the format: go run <filename>.go --script_type <1/2>")

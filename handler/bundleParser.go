@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/lemmamedia/ads-txt-crawler/service/parsers"
 )
 
 func BundleParser(db *sql.DB) {
@@ -13,7 +12,7 @@ func BundleParser(db *sql.DB) {
 
 	// Run each parser in its own goroutine
 	// parsers.AndroidBundleParser(db)
-	parsers.IosBundleParser(db)
+	// parsers.IosBundleParser(db)
 	// parsers.CTVBundleParser(db)
 	// parsers.WebParser(db)
 

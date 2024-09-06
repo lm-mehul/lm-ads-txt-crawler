@@ -2,6 +2,7 @@ package parsers
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 	"net/http"
 	"strings"
@@ -12,51 +13,40 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/models"
 )
 
-func IosBundleParser(db *sql.DB) {
-	fmt.Println("Executing iOS bundle parser...")
-	ProcessIOSBundle(db, models.IOSBundles[0])
-}
-
-func ProcessIOSBundle(db *sql.DB, iOSBundle string) models.BundleInfo {
+func ProcessIOSBundle(db *sql.DB, iOSBundle string) (models.BundleInfo, error) {
 	var bundle models.BundleInfo
 
 	url := fmt.Sprintf("https://apps.apple.com/us/app/%s/id%s", iOSBundle, iOSBundle)
 	response, err := http.Head(url)
 	if err != nil {
-		// fmt.Printf("Error: %s\n", err)
-		return bundle
+		return bundle, errors.New("Invalid iOS Bundle")
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != 200 {
-		// utils.LogBundleError(iOSBundle, constant.BUNDLE_MOBILE_IOS, fmt.Sprintf("Error: %d", response.StatusCode))
-		return bundle
+		return bundle, errors.New("Invalid iOS Bundle")
 	}
 
 	appleStoreURL := response.Request.URL.String()
 
 	response, err = http.Get(appleStoreURL)
 	if err != nil {
-		// utils.LogBundleError(iOSBundle, constant.BUNDLE_MOBILE_IOS, "Invalid iOS Bundle")
-		return bundle
+		return bundle, errors.New("Invalid iOS Bundle")
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != 200 {
-		// utils.LogBundleError(iOSBundle, constant.BUNDLE_MOBILE_IOS, "Invalid iOS Bundle")
-		return bundle
+		return bundle, errors.New("Invalid iOS Bundle")
 	}
 
 	doc, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
-		// utils.LogBundleError(iOSBundle, constant.BUNDLE_MOBILE_IOS, "Invalid iOS Bundle")
-		return bundle
+		return bundle, errors.New("Invalid iOS Bundle")
 	}
 
 	websiteElement := doc.Find("a.link.icon.icon-after.icon-external")
 	if websiteElement.Length() == 0 {
-		// utils.LogBundleError(iOSBundle, constant.BUNDLE_MOBILE_IOS, "No associated website")
-		return bundle
+		return bundle, errors.New("No associated website")
 	}
 
 	associatedWebsiteURL, _ := websiteElement.Attr("href")
@@ -65,6 +55,5 @@ func ProcessIOSBundle(db *sql.DB, iOSBundle string) models.BundleInfo {
 	bundle.Category = constant.BUNDLE_MOBILE_IOS
 	bundle.Domain = extractDomainFromBundleURL(strings.TrimSpace(bundle.Website))
 
-	fmt.Printf("iOS - Bundle: %s, Website: %s, Domain: %s\n", bundle.Bundle, bundle.Website, bundle.Domain)
-	return bundle
+	return bundle, nil
 }

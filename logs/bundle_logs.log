@@ -1,68 +1,8 @@
-INFO: 2024/09/03 09:48:23 error.go:9: [ Mobile App Android ] Bundle : ai.photo.generator.filter.art 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:23 error.go:9: [ Mobile App Android ] Bundle : ai.photo.wallpaper.wonder.art 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:24 error.go:9: [ Mobile App Android ] Bundle : aimaster.aiiioky.yis 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:24 error.go:9: [ Mobile App Android ] Bundle : Air Hockey Challenge 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:28 error.go:9: [ Mobile App Android ] Bundle : air.com.befunky.cemrtc 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:28 error.go:9: [ Mobile App Android ] Bundle : air.com.befunky.cemrtc.vbnm 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:28 error.go:9: [ Mobile App Android ] Bundle : air.com.befunky.ghjfgj 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:28 error.go:9: [ Mobile App Android ] Bundle : air.com.bettergamestudios.empirefourkingdoms 	 Error : Bundle not in Google Playstore 	
-INFO: 2024/09/03 09:48:40 error.go:9: [ Mobile App IOS ] Bundle : 64810160 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:40 error.go:9: [ Mobile App IOS ] Bundle : 64815608 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:40 error.go:9: [ Mobile App IOS ] Bundle : 69638154 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:41 error.go:9: [ Mobile App IOS ] Bundle : 70003811 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:41 error.go:9: [ Mobile App IOS ] Bundle : 70309401 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:41 error.go:9: [ Mobile App IOS ] Bundle : 72074746 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:41 error.go:9: [ Mobile App IOS ] Bundle : 73423945 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:41 error.go:9: [ Mobile App IOS ] Bundle : 76463488 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:42 error.go:9: [ Mobile App IOS ] Bundle : 76551899 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:42 error.go:9: [ Mobile App IOS ] Bundle : 86647517 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:42 error.go:9: [ Mobile App IOS ] Bundle : 105877429 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:43 error.go:9: [ Mobile App IOS ] Bundle : 108490396 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:43 error.go:9: [ Mobile App IOS ] Bundle : 109631182 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:43 error.go:9: [ Mobile App IOS ] Bundle : 117721519 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:44 error.go:9: [ Mobile App IOS ] Bundle : 120603363 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:44 error.go:9: [ Mobile App IOS ] Bundle : 126393470 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:45 error.go:9: [ Mobile App IOS ] Bundle : 127419540 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:45 error.go:9: [ Mobile App IOS ] Bundle : 127422827 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:45 error.go:9: [ Mobile App IOS ] Bundle : 129404664 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:46 error.go:9: [ Mobile App IOS ] Bundle : 137119003 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:46 error.go:9: [ Mobile App IOS ] Bundle : 140958092 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:46 error.go:9: [ Mobile App IOS ] Bundle : 141486588 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:46 error.go:9: [ Mobile App IOS ] Bundle : 146744870 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:47 error.go:9: [ Mobile App IOS ] Bundle : 149445597 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:47 error.go:9: [ Mobile App IOS ] Bundle : 153014951 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:47 error.go:9: [ Mobile App IOS ] Bundle : 172081019 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:48 error.go:9: [ Mobile App IOS ] Bundle : 172081654 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:48 error.go:9: [ Mobile App IOS ] Bundle : 172561937 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:48 error.go:9: [ Mobile App IOS ] Bundle : 175271384 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:49 error.go:9: [ Mobile App IOS ] Bundle : 177116045 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:49 error.go:9: [ Mobile App IOS ] Bundle : 181435286 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:49 error.go:9: [ Mobile App IOS ] Bundle : 181657018 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:49 error.go:9: [ Mobile App IOS ] Bundle : 182967703 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:50 error.go:9: [ Mobile App IOS ] Bundle : 183547012 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:50 error.go:9: [ Mobile App IOS ] Bundle : 184915709 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:50 error.go:9: [ Mobile App IOS ] Bundle : 184916300 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:51 error.go:9: [ Mobile App IOS ] Bundle : 191193925 	 Error : Error: 404 	
-INFO: 2024/09/03 09:48:51 error.go:9: [ Mobile App IOS ] Bundle : 236078754 	 Error : Error: 404 	
-INFO: 2024/09/03 09:49:02 error.go:9: [ CTV ] Bundle : com.animeworld.app_pro2 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:03 error.go:9: [ CTV ] Bundle : com.best+sushi+diy.rokuos 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:04 error.go:9: [ CTV ] Bundle : samsung.tv.plus.600938 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:05 error.go:9: [ CTV ] Bundle : vizio.freemovies 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:07 error.go:9: [ CTV ] Bundle : com.videotron.letter_wizard 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:09 error.go:9: [ CTV ] Bundle : samsung.scn.209 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:10 error.go:9: [ CTV ] Bundle : es.tvgam.2048Maniac.vidaa 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:12 error.go:9: [ CTV ] Bundle : firetv.fawesome.tv 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:12 error.go:9: [ CTV ] Bundle : com.distro+tv.fireos 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:13 error.go:9: [ CTV ] Bundle : B00J7KLCUQ 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:14 error.go:9: [ CTV ] Bundle : vizio.watchfree.bobross 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:16 error.go:9: [ CTV ] Bundle : 54092 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:21 error.go:9: [ CTV ] Bundle : B01MQ116BJ 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:49:22 error.go:9: [ CTV ] Bundle : com.comcast.sortit 	 Error : Website Not Found 	
-INFO: 2024/09/03 09:55:43 error.go:9: [ Mobile App IOS ] Bundle : 316050001 	 Error : Error: 404 	
-INFO: 2024/09/03 09:56:29 error.go:9: [ Mobile App IOS ] Bundle : 324021126 	 Error : Error: 404 	
-INFO: 2024/09/03 09:56:43 error.go:9: [ Mobile App IOS ] Bundle : 325185696 	 Error : Error: 404 	
-INFO: 2024/09/03 09:56:51 error.go:9: [ Mobile App IOS ] Bundle : 326647139 	 Error : Error: 404 	
-INFO: 2024/09/03 09:57:27 error.go:9: [ Mobile App IOS ] Bundle : 331213753 	 Error : Error: 404 	
-INFO: 2024/09/03 09:57:35 error.go:9: [ Mobile App IOS ] Bundle : 331794412 	 Error : Error: 404 	
-INFO: 2024/09/03 09:58:02 error.go:9: [ Mobile App IOS ] Bundle : 332534830 	 Error : Error: 404 	
-INFO: 2024/09/03 09:58:21 error.go:9: [ Mobile App IOS ] Bundle : 334682375 	 Error : Error: 404 	
+INFO: 2024/09/07 00:17:59 logger.go:37: ai.photo.generator.filter.art Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:17:59 logger.go:37: ai.photo.wallpaper.wonder.art Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:00 logger.go:37: aimaster.aiiioky.yis Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:00 logger.go:37: Air Hockey Challenge Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.cemrtc Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.cemrtc.vbnm Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.ghjfgj Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 00:18:04 logger.go:37: air.com.bettergamestudios.empirefourkingdoms Mobile App Android Invalid Google Bundle
