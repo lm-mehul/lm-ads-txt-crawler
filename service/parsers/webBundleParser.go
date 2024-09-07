@@ -24,7 +24,6 @@ func ProcessWebBundle(db *sql.DB, webBundle string) (models.BundleInfo, error) {
 	if err != nil {
 		return bundle, errors.New("Error extracting domain for web parser")
 	}
-
 	return bundle, nil
 }
 

@@ -258,4 +258,4 @@ var CTVBundles = []string{
 	"com.comcast.sortit",
 }
 
-var WebBundles = []string{"com.google.android.apps.maps", "com.google.android.apps.docs", "com.google.android.apps.photos"}
+var WebBundles = []string{"https://www.geeksforgeeks.org/", "https://www.moneycontrol.com/"}

@@ -1,0 +1,2 @@
+ERROR: 2024/09/07 01:02:48 logger.go:42: Error saving crawled bundles in DB: %v Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ERROR: 2024/09/07 01:02:48 logger.go:42: Error saving lemma lines in DB: %v Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1

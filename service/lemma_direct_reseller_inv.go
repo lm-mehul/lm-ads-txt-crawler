@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/lemmamedia/ads-txt-crawler/models"
@@ -21,12 +22,16 @@ func LemmaDirectsAndResellerInventory(adsTxtPage string) models.LemmaEntry {
 
 	for _, line := range adstxtPageLineSplits {
 		if strings.Contains(line, "lemmatechnologies.com") {
+			fmt.Printf("Lemma Line: %s\n", line)
 			parts := strings.Split(line, ",")
+			fmt.Printf("Parts: %v\n", parts)
 			if len(parts) > 1 {
 				publisherID := strings.TrimSpace(parts[1])
 				if strings.Contains(line, "direct") {
 					lemmaDirectPubs[publisherID] = struct{}{}
+					fmt.Printf("Direct: %s\n", publisherID)
 				} else if strings.Contains(line, "reseller") {
+					fmt.Printf("Reseller: %s\n", publisherID)
 					lemmaResellerPubs[publisherID] = struct{}{}
 				}
 			}

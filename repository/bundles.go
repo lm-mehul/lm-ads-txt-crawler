@@ -34,8 +34,15 @@ func SaveBundlesInDB(db *sql.DB, bundles []models.BundleInfo) error {
 
 func GetBundlesFromDB(db *sql.DB, limit, offset int) ([]models.BundleInfo, error) {
 	var bundles []models.BundleInfo
-	query := "SELECT bundle,category FROM bundles LIMIT ? OFFSET ?"
-	rows, err := db.Query(query, limit, offset)
+	query := "SELECT bundle,category FROM bundles"
+	params := make([]any, 0)
+
+	if limit > 0 {
+		query += "LIMIT ? OFFSET ?"
+		params = append(params, limit, offset)
+	}
+
+	rows, err := db.Query(query, params...)
 	if err != nil {
 		return bundles, err
 	}

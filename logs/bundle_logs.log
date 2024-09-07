@@ -1,8 +1,13 @@
-INFO: 2024/09/07 00:17:59 logger.go:37: ai.photo.generator.filter.art Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:17:59 logger.go:37: ai.photo.wallpaper.wonder.art Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:00 logger.go:37: aimaster.aiiioky.yis Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:00 logger.go:37: Air Hockey Challenge Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.cemrtc Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.cemrtc.vbnm Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:04 logger.go:37: air.com.befunky.ghjfgj Mobile App Android Invalid Google Bundle
-INFO: 2024/09/07 00:18:04 logger.go:37: air.com.bettergamestudios.empirefourkingdoms Mobile App Android Invalid Google Bundle
+INFO: 2024/09/07 01:26:29 logger.go:37: www.geeksforgeeks.org Web failed to fetch URL: Get "http://www.geeksforgeeks.org/ads.txt": dial tcp: lookup www.geeksforgeeks.org on 127.0.0.53:53: read udp 127.0.0.1:57752->127.0.0.53:53: i/o timeout
+INFO: 2024/09/07 01:26:39 logger.go:37: https://www.geeksforgeeks.org/ Web failed to fetch URL: Get "http://www.geeksforgeeks.org/ads.txt": dial tcp: lookup www.geeksforgeeks.org on 127.0.0.53:53: read udp 127.0.0.1:41343->127.0.0.53:53: i/o timeout
+INFO: 2024/09/07 01:26:46 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: server misbehaving
+INFO: 2024/09/07 01:35:46 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:35:46 logger.go:37: com.google.android.apps.photos CTV failed to fetch URL: Get "http://com.google.android.apps.photos/app-ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:40:35 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:40:35 logger.go:37: com.google.android.apps.photos CTV failed to fetch URL: Get "http://com.google.android.apps.photos/app-ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:42:12 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:42:12 logger.go:37: com.google.android.apps.photos CTV failed to fetch URL: Get "http://com.google.android.apps.photos/app-ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:45:16 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:45:16 logger.go:37: com.google.android.apps.photos CTV failed to fetch URL: Get "http://com.google.android.apps.photos/app-ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:46:01 logger.go:37: com.google.android.apps.photos Web failed to fetch URL: Get "http://com.google.android.apps.photos/ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
+INFO: 2024/09/07 01:46:01 logger.go:37: com.google.android.apps.photos CTV failed to fetch URL: Get "http://com.google.android.apps.photos/app-ads.txt": dial tcp: lookup com.google.android.apps.photos on 127.0.0.53:53: no such host
