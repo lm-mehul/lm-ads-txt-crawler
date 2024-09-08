@@ -82,8 +82,7 @@ func constructPayload(commonParams, ctvBundle string) (string, error) {
 
 	payloadJSON, err := json.Marshal(payload)
 	if err != nil {
-		fmt.Printf("Error encoding payload: %v\n", err)
-		return "", err
+		return "", errors.New(fmt.Sprintf("Error encoding payload: %v\n", err))
 	}
 
 	// Convert payload to string

@@ -12,7 +12,7 @@ import (
 // SaveLemmaEntriesInDB inserts bundles, categories, and lemma information into the lemma_entries table.
 func SaveLemmaEntriesInDB(db *sql.DB, entries []models.LemmaEntry) error {
 	var buff bytes.Buffer
-	buff.WriteString("INSERT INTO lemma_entries(bundle, category, Lemma_Direct, Lemma_Reseller) VALUES ")
+	buff.WriteString("INSERT IGNORE INTO lemma_entries(bundle, category, Lemma_Direct, Lemma_Reseller, ads_page_url, page_type) VALUES ")
 	values := make([]interface{}, 0)
 	validEntryCount := int64(0)
 	for index := range entries {
@@ -21,10 +21,12 @@ func SaveLemmaEntriesInDB(db *sql.DB, entries []models.LemmaEntry) error {
 			entries[index].Category,
 			strings.TrimSpace(entries[index].LemmaDirect),
 			strings.TrimSpace(entries[index].LemmaReseller),
+			entries[index].AdsPageURL,
+			entries[index].PageType,
 		)
 		validEntryCount++
 	}
-	placeholder := strings.Repeat("(?,?,?,?), ", int(validEntryCount))
+	placeholder := strings.Repeat("(?,?,?,?,?,?), ", int(validEntryCount))
 	if validEntryCount > 0 {
 		placeholder = placeholder[:len(placeholder)-2] // Remove the trailing comma and space
 	}

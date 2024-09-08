@@ -1,5 +1,43 @@
 package models
 
+import (
+	"github.com/lemmamedia/ads-txt-crawler/constant"
+)
+
+func PopulateSampleBundles() []BundleInfo {
+	var tempBundles []BundleInfo
+
+	for _, bundle := range AndroidBundles {
+		bundleInfo := BundleInfo{
+			Bundle:   bundle,
+			Category: constant.BUNDLE_MOBILE_ANDROID,
+		}
+		tempBundles = append(tempBundles, bundleInfo)
+	}
+	for _, bundle := range IOSBundles {
+		bundleInfo := BundleInfo{
+			Bundle:   bundle,
+			Category: constant.BUNDLE_MOBILE_IOS,
+		}
+		tempBundles = append(tempBundles, bundleInfo)
+	}
+	for _, bundle := range CTVBundles {
+		bundleInfo := BundleInfo{
+			Bundle:   bundle,
+			Category: constant.BUNDLE_CTV,
+		}
+		tempBundles = append(tempBundles, bundleInfo)
+	}
+	for _, bundle := range WebBundles {
+		bundleInfo := BundleInfo{
+			Bundle:   bundle,
+			Category: constant.BUNDLE_WEB,
+		}
+		tempBundles = append(tempBundles, bundleInfo)
+	}
+	return tempBundles
+}
+
 var AndroidBundles = []string{
 	"ai.photo.editor.faceswap.avatar",
 	"ai.photo.enhancer.ig.tiktok.editor.remini.pixelup.hd.free",

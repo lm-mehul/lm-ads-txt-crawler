@@ -18,14 +18,14 @@ func init() {
 	}
 
 	// Initialize InfoLogger for bundle logs
-	infoFile, err := os.OpenFile("logs/bundle_logs.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	infoFile, err := os.OpenFile("logs/bundle_logs.log", os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatalf("Error opening info log file: %v", err)
 	}
 	InfoLogger = log.New(infoFile, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
 
 	// Initialize ErrorLogger for general errors
-	errorFile, err := os.OpenFile("logs/app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	errorFile, err := os.OpenFile("logs/app.log", os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatalf("Error opening error log file: %v", err)
 	}

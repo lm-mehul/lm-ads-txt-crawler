@@ -42,6 +42,20 @@ func CrawlDomain(domain, pageType string) ([]byte, string, error) {
 	}
 	defer resp.Body.Close()
 
+	// var resp *http.Response
+	// retryCount := 2
+	// for i := 0; i < retryCount; i++ {
+	// 	resp, err = client.Do(req)
+	// 	if err != nil {
+	// 		if strings.Contains(err.Error(), "i/o timeout") && i < retryCount-1 {
+	// 			time.Sleep(2 * time.Second) // wait before retrying
+	// 			continue
+	// 		}
+	// 		return nil, url, fmt.Errorf("failed to fetch URL: %w", err)
+	// 	}
+	// 	defer resp.Body.Close()
+	// }
+
 	if resp.StatusCode != http.StatusOK {
 		// totalErrors++
 		return nil, url, fmt.Errorf("non-200 status code received: %d", resp.StatusCode)

@@ -11,9 +11,10 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-const batchSize = 1000 // Adjust this batch size as needed
-
 func PopulateBundles(db *sql.DB) {
+
+	const batchSize = 1000 // Adjust this batch size as needed
+
 	// Path to the Excel file
 	filePath := "/home/lemma/Desktop/CMS-2/crawler/lm-ads-txt-crawler/resources/domains/bundles.xlsx"
 
