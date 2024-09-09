@@ -25,3 +25,13 @@ type LemmaEntry struct {
 	LemmaReseller string    `json:"lemma_reseller"`
 	CreatedAt     time.Time `json:"creation_time"`
 }
+
+type DemandLinesEntry struct {
+	Bundle        string `json:"bundle"`
+	Category      string `json:"category"`
+	AdsPageURL    string
+	PageType      string
+	LemmaDirect   string    `json:"lemma_direct"`
+	LemmaReseller string    `json:"lemma_reseller"`
+	CreatedAt     time.Time `json:"creation_time"`
+}

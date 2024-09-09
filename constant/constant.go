@@ -11,3 +11,7 @@ const (
 	APP_ADS_TXT_pageType = "app-ads.txt"
 	ADS_TXT_pageType     = "ads.txt"
 )
+
+var (
+	RequestTimeoutCount = 0
+)

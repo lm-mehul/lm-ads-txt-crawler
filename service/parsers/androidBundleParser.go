@@ -83,19 +83,33 @@ func findWebsiteInHTML(body []byte, tagName, classVal string) string {
 }
 
 func extractDomainFromBundleURL(urlStr string) string {
+
+	// Remove unwanted escape sequences like %20 (space) and %09 (tab)
+	urlStr = strings.ReplaceAll(urlStr, "%20", "")
+	urlStr = strings.ReplaceAll(urlStr, "%09", "")
+
 	defer func() {
 		if r := recover(); r != nil {
 			log.Printf("Error processing URL '%s': %v\n", urlStr, r)
 		}
 	}()
 
-	if strings.Contains(urlStr, "/") {
-		parsedURL, err := url.Parse(urlStr)
-		if err != nil {
-			panic(err)
-		}
-		return parsedURL.Hostname()
-	} else {
-		return strings.TrimSpace(urlStr)
+	// if strings.Contains(urlStr, "/") {
+	// 	parsedURL, err := url.Parse(urlStr)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	return parsedURL.Hostname()
+	// } else {
+	// 	return strings.TrimSpace(urlStr)
+	// }
+
+	parsedURL, err := url.Parse(urlStr)
+	if err != nil {
+		log.Printf("Invalid URL format after cleanup: %s\n", urlStr)
+		return ""
 	}
+
+	return parsedURL.Hostname()
+
 }

@@ -28,7 +28,12 @@ func ProcessWebBundle(db *sql.DB, webBundle string) (models.BundleInfo, error) {
 }
 
 func extractDomainForWebParser(rawURL string) (string, error) {
-	parsedURL, err := url.Parse(rawURL)
+
+	// Remove unwanted escape sequences like %20 (space) and %09 (tab)
+	rawURL = strings.ReplaceAll(rawURL, "%20", "")
+	rawURL = strings.ReplaceAll(rawURL, "%09", "")
+
+	parsedURL, err := url.ParseRequestURI(rawURL)
 	if err != nil {
 		return "", errors.New("Error processing URL")
 	}

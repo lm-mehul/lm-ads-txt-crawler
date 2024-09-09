@@ -11,7 +11,7 @@ import (
 	"github.com/xuri/excelize/v2"
 )
 
-func PopulateBundles(db *sql.DB) {
+func PopulateBundlesFromExcel(db *sql.DB) {
 
 	const batchSize = 1000 // Adjust this batch size as needed
 

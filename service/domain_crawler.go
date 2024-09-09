@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/lemmamedia/ads-txt-crawler/constant"
 )
 
 var (
@@ -14,7 +16,7 @@ var (
 
 // Custom client with redirect count check
 var client = &http.Client{
-	Timeout: 15 * time.Second,
+	Timeout: 10 * time.Second,
 	CheckRedirect: func(req *http.Request, via []*http.Request) error {
 		if len(via) >= 3 { // Limit redirects to 3
 			return fmt.Errorf("stopped after 3 redirects")
@@ -35,29 +37,22 @@ func CrawlDomain(domain, pageType string) ([]byte, string, error) {
 	req.Header.Set("User-Agent", userAgent)
 	req.Header.Set("Accept", "text/plain")
 
-	resp, err := client.Do(req)
-	if err != nil {
-		// main.TotalErrors++
-		return nil, url, fmt.Errorf("failed to fetch URL: %w", err)
+	var resp *http.Response
+	retryCount := 2 // Using this approach to inrease accuracy
+	for i := 0; i < retryCount; i++ {
+		resp, err = client.Do(req)
+		if err != nil {
+			if strings.Contains(err.Error(), "i/o timeout") && i < (retryCount-1) {
+				time.Sleep(1 * time.Second) // wait before retrying
+				constant.RequestTimeoutCount++
+				continue
+			}
+			return nil, url, fmt.Errorf("failed to fetch URL: %w", err)
+		}
+		defer resp.Body.Close()
 	}
-	defer resp.Body.Close()
 
-	// var resp *http.Response
-	// retryCount := 2
-	// for i := 0; i < retryCount; i++ {
-	// 	resp, err = client.Do(req)
-	// 	if err != nil {
-	// 		if strings.Contains(err.Error(), "i/o timeout") && i < retryCount-1 {
-	// 			time.Sleep(2 * time.Second) // wait before retrying
-	// 			continue
-	// 		}
-	// 		return nil, url, fmt.Errorf("failed to fetch URL: %w", err)
-	// 	}
-	// 	defer resp.Body.Close()
-	// }
-
-	if resp.StatusCode != http.StatusOK {
-		// totalErrors++
+	if resp != nil && resp.StatusCode != http.StatusOK {
 		return nil, url, fmt.Errorf("non-200 status code received: %d", resp.StatusCode)
 	}
 
