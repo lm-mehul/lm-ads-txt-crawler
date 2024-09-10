@@ -68,3 +68,27 @@ func GetBundlesCount(db *sql.DB) (int, error) {
 	}
 	return count, nil
 }
+
+// SaveBundlesFromMasterSheet inserts distinct bundles and categories from the bundle_mastersheet table into the bundles table.
+func SaveBundlesFromMasterSheet(db *sql.DB) error {
+	query := `
+		INSERT INTO bundles (bundle, category)
+		SELECT DISTINCT
+			bundle,
+			CASE
+				WHEN device = 'ios' THEN 'Mobile App IOS'
+				WHEN device = 'android' THEN 'Mobile App Android'
+				ELSE 'CTV'
+			END AS category
+		FROM bundle_mastersheet
+		WHERE bundle IS NOT NULL;
+	`
+
+	// Execute the query
+	_, err := db.Exec(query)
+	if err != nil {
+		log.Printf("Error executing bundles data insert: %v", err)
+		return err
+	}
+	return nil
+}

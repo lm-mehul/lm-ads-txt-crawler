@@ -162,13 +162,13 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB) {
 	const batchSize = 1000
 
 	// Fetch bundles from DB
-	// tempBundles := models.PopulateSampleBundles()
+	tempBundles := models.PopulateSampleBundles()
 
-	tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
-	if err != nil {
-		logger.Error("Error fetching bundles from DB: %v", err)
-		return
-	}
+	// tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
+	// if err != nil {
+	// 	logger.Error("Error fetching bundles from DB: %v", err)
+	// 	return
+	// }
 
 	totalBundles := len(tempBundles)
 
@@ -177,7 +177,7 @@ func FetchLemmaDirectsAndResellerInventory(db *sql.DB) {
 	var wg sync.WaitGroup
 
 	// Start worker pool
-	numWorkers := 30 // Number of workers can be adjusted based on system capability
+	numWorkers := 3 // Number of workers can be adjusted based on system capability
 	for i := 0; i < numWorkers; i++ {
 		wg.Add(1)
 		go func() {

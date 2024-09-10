@@ -99,14 +99,27 @@ func AdsTxtLineCheck(db *sql.DB, parserType string) {
 	// }
 }
 
-func IsAdsTxtLinePresent(domain, adsTxtPage string) []string {
+func ReadAdsTxtDemandLines() []string {
+	var adsTxtDemandLines []string
+	fmt.Println("Fetching ads.txt demand lines from adstxt_lines.txt file...")
+
 	dir, err := os.Getwd()
 	if err != nil {
 		fmt.Println("Error getting current directory:", err)
 		return []string{}
 	}
-	fmt.Println("Fetching ads.txt lines from adstxt_lines.txt file...")
+
 	adsTxtLinesList := utils.ReadLinesFromFile(dir + "/resources/domains/adstxt_lines.txt")
+
+	for _, adsTxtLine := range adsTxtLinesList {
+		line := strings.TrimSpace(strings.ReplaceAll(strings.ToLower(adsTxtLine), " ", ""))
+		adsTxtDemandLines = append(adsTxtDemandLines, line)
+	}
+
+	return adsTxtDemandLines
+}
+
+func IsAdsTxtLinePresent(domain, adsTxtPage string, adsTxtLinesList []string) (bool, []string) {
 
 	pageResponse := strings.ToLower(strings.ReplaceAll(adsTxtPage, " ", ""))
 	pageResponse = strings.ReplaceAll(pageResponse, "\xa0", "")
@@ -120,5 +133,5 @@ func IsAdsTxtLinePresent(domain, adsTxtPage string) []string {
 			presentDomains = append(presentDomains, domain)
 		}
 	}
-	return present
+	return true, present
 }

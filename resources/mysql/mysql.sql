@@ -1,4 +1,4 @@
-0
+0 . Bundles :
 
 CREATE TABLE bundles (
     id INT NOT NULL AUTO_INCREMENT,
@@ -58,11 +58,17 @@ CREATE TABLE `lemma_entries` (
 
 4. Demand Table
 
-id int not null auto increment
-bundle    varchar(512) not null
-Category  varchar(255) not null
-demand columns - dynamic columns
-creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE bundle_demand_lines (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    bundle_id INT NOT NULL,
+    `category` varchar(255) NOT NULL,
+    demand_line VARCHAR(255) NOT NULL,
+    `ads_page_url` varchar(512) DEFAULT NULL,
+    `page_type` varchar(32) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (bundle_id) REFERENCES bundles(id)
+);
+
 
 
 5. Penetration insights Table :
@@ -77,3 +83,4 @@ example :
 Lemma Direct | 75 | 45 | 32 | 23
 Lemma Reseller | 56 | 45 | 12 | 12
 
+6. 

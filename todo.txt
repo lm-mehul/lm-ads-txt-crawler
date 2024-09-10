@@ -1,43 +1,26 @@
 
-- The re direction logic can cause time overhead (need optimization in future).
+Results : 
 
 
-use batching to insert ata in database
-proper error handling and logging
-Use batching to read data
+Bundle crawling completed. Please wait for the results to be stored in the database...
+---------------------------------------------------------------------------------
+Total bundles: 108774
+Total crawled bundles: 48864
+Total failed bundles: 68778
+Total lemma lines: 37062
+---------------------------------------------------------------------------------
+Total Request Timeout Count: 214
+---------------------------------------------------------------------------------
+Total execution time: 3h6m27.046026142s
 
-Open question - For isAdsTxtLinePresent, do we need to use all domains from DB or select domains from ads0txt-domains.txt file ?
-
-
-Add metrics - total fails/discarded
-minimize retries - by inserting domain as primary key
-
-
-
-
-
-Results :   28 March
-
-All parsers have finished.
-Bundle Adstxt Parser completed.
-Total execution time: 11m28.181921205s
+mysql> delete from crawled_bundles;
+Query OK, 48864 rows affected (0.43 sec)
+mysql> delete from failed_bundles;
+Query OK, 68778 rows affected (0.47 sec)
+mysql> delete from lemma_entries;
+Query OK, 32406 rows affected (0.32 sec)
 
 
-mysql> select count(*) from un_crawled_domains;
-+----------+
-| count(*) |
-+----------+
-|    22056 |
-+----------+
-1 row in set (0.00 sec)
-
-mysql> select count(*) from crawled_bundles;
-+----------+
-| count(*) |
-+----------+
-|    49287 |
-+----------+
-1 row in set (0.01 sec)
 
 
 
