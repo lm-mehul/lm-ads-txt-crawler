@@ -29,6 +29,7 @@ type LemmaEntry struct {
 type DemandLinesEntry struct {
 	Bundle     string    `json:"bundle"`
 	Category   string    `json:"category"`
+	Domain     string    `json:"domain"`
 	AdsPageURL string    `json:"ads_page_url"`
 	PageType   string    `json:"page_type"`
 	DemandLine string    `json:"demand_line"`

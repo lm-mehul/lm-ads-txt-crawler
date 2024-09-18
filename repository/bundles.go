@@ -80,7 +80,7 @@ func SaveBundlesFromMasterSheet(db *sql.DB) error {
 				WHEN device = 'android' THEN 'Mobile App Android'
 				ELSE 'CTV'
 			END AS category
-		FROM bundle_mastersheet
+		FROM lm_teda.bundle_mastersheet
 		WHERE bundle IS NOT NULL;
 	`
 

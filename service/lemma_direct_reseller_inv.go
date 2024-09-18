@@ -24,7 +24,7 @@ func LemmaDirectsAndResellerInventory(adsTxtPage string) models.LemmaEntry {
 
 			parts := strings.Split(line, ",")
 
-			if len(parts) > 1 {
+			if len(parts) > 2 {
 
 				publisherID := strings.TrimSpace(parts[1])
 

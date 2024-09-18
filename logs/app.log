@@ -1,4 +1,0 @@
-ERROR: 2024/09/09 15:41:42 logger.go:42: Successfully saved %s batch %d (%d rows)
- crawled bundles 1 1
-ERROR: 2024/09/09 15:41:42 logger.go:42: Successfully saved %s batch %d (%d rows)
- failed bundles 1 1

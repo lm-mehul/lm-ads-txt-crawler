@@ -1,6 +1,18 @@
+
+CREATE DATABASE IF NOT EXISTS `lm_teda_crawler`;
+
 0 . Bundles :
 
 CREATE TABLE bundles (
+    id INT NOT NULL AUTO_INCREMENT,
+    bundle VARCHAR(512) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY unique_bundle_category (bundle, category)
+);
+
+CREATE TABLE test_bundles (
     id INT NOT NULL AUTO_INCREMENT,
     bundle VARCHAR(512) NOT NULL,
     category VARCHAR(255) NOT NULL,
@@ -55,18 +67,17 @@ CREATE TABLE `lemma_entries` (
   UNIQUE KEY `unique_bundle_category_lemma` (`bundle`(191),`category`(191),`Lemma_Direct`(100),`Lemma_Reseller`(100))
 );
 
-
 4. Demand Table
 
 CREATE TABLE bundle_demand_lines (
     id INT AUTO_INCREMENT PRIMARY KEY,
     bundle_id INT NOT NULL,
     `category` varchar(255) NOT NULL,
+    domain VARCHAR(512) NOT NULL,
     demand_line VARCHAR(255) NOT NULL,
     `ads_page_url` varchar(512) DEFAULT NULL,
     `page_type` varchar(32) DEFAULT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (bundle_id) REFERENCES bundles(id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 

@@ -9,20 +9,25 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/models"
 )
 
-// SaveFailedBundlesInDB inserts bundles and categories into the failed_bundles table.
-func SaveDemandLinesResultInDB(db *sql.DB, bundles []models.BundleInfo) error {
+func SaveDemandLinesResultInDB(db *sql.DB, bundles []models.DemandLinesEntry) error {
 	var buff bytes.Buffer
-	buff.WriteString("INSERT IGNORE INTO failed_bundles(bundle, category) VALUES ")
+	buff.WriteString("INSERT INTO bundle_demand_lines(bundle_id, category, domain, demand_line, ads_page_url, page_type) VALUES ")
 	values := make([]interface{}, 0)
 	validBundleCount := int64(0)
+
 	for index := range bundles {
 		values = append(values,
-			strings.TrimSpace(bundles[index].Bundle),
+			bundles[index].Bundle, // Assuming bundle_id comes from another function
 			bundles[index].Category,
+			bundles[index].Domain,
+			bundles[index].DemandLine,
+			bundles[index].AdsPageURL,
+			bundles[index].PageType,
 		)
 		validBundleCount++
 	}
-	placeholder := strings.Repeat("(?,?), ", int(validBundleCount))
+
+	placeholder := strings.Repeat("(?,?,?,?,?,?), ", int(validBundleCount))
 	if validBundleCount > 0 {
 		placeholder = placeholder[:len(placeholder)-2] // Remove the trailing comma and space
 	}
@@ -31,7 +36,7 @@ func SaveDemandLinesResultInDB(db *sql.DB, bundles []models.BundleInfo) error {
 	// Execute the query with the collected values
 	_, err := db.Exec(buff.String(), values...)
 	if err != nil {
-		log.Printf("Error executing failed_bundles data insert: %v", err)
+		log.Printf("Error executing bundle_demand_lines data insert: %v", err)
 		return err
 	}
 	return nil

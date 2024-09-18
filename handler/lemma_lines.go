@@ -121,12 +121,13 @@ func processFetchedBundlesForLemmaLines(db *sql.DB, fetchedBundle models.BundleI
 			presenceList.Category = fetchedBundle.Category
 			presenceList.AdsPageURL = url
 			presenceList.PageType = constant.ADS_TXT_pageType
+
 			lemmaLines = append(lemmaLines, presenceList)
 		}
 		bundle.AdsTxtURL = url
 		bundle.AdsTxtHash = utils.GenerateHash(adsTxtPage)
 	} else {
-		logger.Info(bundle.Bundle, constant.BUNDLE_MOBILE_ANDROID, err.Error())
+		logger.Info(bundle.Bundle, constant.FAILED_DOMAIN_CRAWLING, err.Error())
 	}
 
 	appAdsTxtPage, url, err := service.CrawlDomain(fetchedBundle.Domain, constant.APP_ADS_TXT_pageType)
@@ -143,7 +144,7 @@ func processFetchedBundlesForLemmaLines(db *sql.DB, fetchedBundle models.BundleI
 		bundle.AppAdsTxtURL = url
 		bundle.AppAdsTxtHash = utils.GenerateHash(appAdsTxtPage)
 	} else {
-		logger.Info(bundle.Bundle, constant.BUNDLE_MOBILE_ANDROID, err.Error())
+		logger.Info(bundle.Bundle, constant.FAILED_DOMAIN_CRAWLING, err.Error())
 	}
 
 	if isCrawled == 0 {
