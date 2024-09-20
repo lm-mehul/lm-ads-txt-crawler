@@ -1,184 +1,161 @@
-INFO: 2024/09/16 17:20:14 logger.go:37: Air Hockey Challenge Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:14 logger.go:37: aimaster.aiiioky.yis Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: air.com.befunky.cemrtc Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: ai.photo.generator.filter.art Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: air.com.bettergamestudios.empirefourkingdoms Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: air.com.befunky.ghjfgj Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: ai.photo.wallpaper.wonder.art Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: air.com.befunky.cemrtc.vbnm Mobile App Android Invalid Google Bundle
-INFO: 2024/09/16 17:20:15 logger.go:37: 316050001 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:16 logger.go:37: ai.photo.enhancer.photoclear Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:16 logger.go:37: air.au.com.minimega.bonza Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:16 logger.go:37: ai.photo.editor.faceswap.avatar Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:16 logger.go:37: 314716233 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:16 logger.go:37: ai.photo.enhancer.photoclear Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:16 logger.go:37: 314716233 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:16 logger.go:37: air.au.com.minimega.bonzanatgeo Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: 319881193 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: aichat.chatgpt Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: aigirlfriend.ai.girlfriend Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: 315297855 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: air.au.com.minimega.bonza Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: air.au.com.minimega.bonzajigsaw Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:17 logger.go:37: 324021126 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:17 logger.go:37: 315733642 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:17 logger.go:37: 6475413304 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 314498713 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 314498713 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: air.com.and.games505.gemsofwar Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 6475413304 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:18 logger.go:37: 317547865 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 319740707 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:18 logger.go:37: 315733642 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:18 logger.go:37: 318168623 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 315019111 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:18 logger.go:37: 325185696 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:18 logger.go:37: 326647139 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:18 logger.go:37: air.au.com.metro.DumbWaysToDie2 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: air.biz.rightshift.clickfun.casino Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: 320969612 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: 316025912 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:19 logger.go:37: 315241195 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: 320540355 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:19 logger.go:37: 314487667 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: 321756558 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: air.com.and.games505.gemsofwar Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:19 logger.go:37: 319740707 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:20 logger.go:37: 314952906 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:20 logger.go:37: 318168623 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:20 logger.go:37: 331213753 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:21 logger.go:37: 323108917 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:21 logger.go:37: 324458663 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:21 logger.go:37: 323235598 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:21 logger.go:37: 323237234 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:21 logger.go:37: air.com.airapport.steampunkidlespinner Failed to crawl domain failed to fetch URL: Get "/ads.txt": stopped after 3 redirects
-INFO: 2024/09/16 17:20:21 logger.go:37: 331794412 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:21 logger.go:37: 327205553 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:21 logger.go:37: 328415391 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:21 logger.go:37: 325924444 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:22 logger.go:37: 332534830 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:22 logger.go:37: 326299304 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:22 logger.go:37: 327125649 Failed to crawl domain failed to fetch URL: Get "https://www.dishnetwork.com/ads.txt": tls: failed to verify certificate: x509: certificate is valid for blockbuster.com, www.blockbuster.com, d2mediasales.com, dishlatino.com, dishwireless.com, dishpuertorico.com, airtv.net, dish.com, latino.dish.com, www.d2mediasales.com, media.dish.com, careers.dish.com, www.dishpuertorico.com, www.airtv.net, www.dishlatino.com, itv.dish.com, puertorico.dish.com, www.dish.com, dishbusiness.com, www.dishbusiness.com, not www.dishnetwork.com
-INFO: 2024/09/16 17:20:22 logger.go:37: 328217517 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:22 logger.go:37: 327205553 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:22 logger.go:37: 331810768 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:22 logger.go:37: 333214314 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:22 logger.go:37: 334141111 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:22 logger.go:37: 328412701 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:22 logger.go:37: 333211486 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:22 logger.go:37: 329848247 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:23 logger.go:37: 334634343 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335158729 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 333647776 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 334682375 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 334456452 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 334827661 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 327125649 Failed to crawl domain failed to fetch URL: Get "https://www.dishnetwork.com/app-ads.txt": tls: failed to verify certificate: x509: certificate is valid for blockbuster.com, www.blockbuster.com, d2mediasales.com, dishlatino.com, dishwireless.com, dishpuertorico.com, airtv.net, dish.com, latino.dish.com, www.d2mediasales.com, media.dish.com, careers.dish.com, www.dishpuertorico.com, www.airtv.net, www.dishlatino.com, itv.dish.com, puertorico.dish.com, www.dish.com, dishbusiness.com, www.dishbusiness.com, not www.dishnetwork.com
-INFO: 2024/09/16 17:20:23 logger.go:37: 325814626 Failed to crawl domain failed to fetch URL: Get "https://sellers.sapo.pt/ads.txt": stopped after 3 redirects
-INFO: 2024/09/16 17:20:23 logger.go:37: 335249553 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336474791 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 334678577 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 334256223 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335445524 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 331307981 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:23 logger.go:37: 334627011 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335508679 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335530215 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 332499574 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335624387 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336435697 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336829635 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 328415391 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:23 logger.go:37: 336693856 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336978041 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336914733 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337602365 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336580901 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337600570 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336693422 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337602896 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337606352 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 324335340 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:23 logger.go:37: 337346574 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337248563 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337056601 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 338083706 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 336475436 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 338525188 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 325814626 Failed to crawl domain failed to fetch URL: Get "https://sellers.sapo.pt/app-ads.txt": stopped after 3 redirects
-INFO: 2024/09/16 17:20:23 logger.go:37: 338711072 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 332116103 Failed to crawl domain failed to fetch URL: Get "https://a.pub.network/swingbyswing-com/ads.txt": stopped after 3 redirects
-INFO: 2024/09/16 17:20:23 logger.go:37: 338147872 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 338764030 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 338851554 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 339532909 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337604610 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337605959 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 335436553 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 337710261 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 339777505 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 340021100 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 339559940 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 328412701 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:23 logger.go:37: 338088432 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 329848247 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:23 logger.go:37: 338828953 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 341283460 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 341894188 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 341541599 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 342138881 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 340372401 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 332116103 Failed to crawl domain failed to fetch URL: Get "https://a.pub.network/swingu-com/app-ads.txt": stopped after 3 redirects
-INFO: 2024/09/16 17:20:23 logger.go:37: 341232718 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 341089820 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:23 logger.go:37: 331307981 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:23 logger.go:37: 341271289 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 341240082 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 341297926 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 341295335 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 342431363 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 341532096 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:24 logger.go:37: 330846874 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:24 logger.go:37: 341243520 Mobile App IOS Invalid iOS Bundle
-INFO: 2024/09/16 17:20:25 logger.go:37: 330846874 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:25 logger.go:37: 324335340 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:27 logger.go:37: samsung.tv.plus.600938 CTV Website not found in response
-INFO: 2024/09/16 17:20:27 logger.go:37: com.best+sushi+diy.rokuos CTV Website not found in response
-INFO: 2024/09/16 17:20:27 logger.go:37: firetv.fawesome.tv CTV Website not found in response
-INFO: 2024/09/16 17:20:28 logger.go:37: B00J7KLCUQ CTV Website not found in response
-INFO: 2024/09/16 17:20:28 logger.go:37: es.tvgam.2048Maniac.vidaa CTV Website not found in response
-INFO: 2024/09/16 17:20:28 logger.go:37: com.animeworld.app_pro2 CTV Website not found in response
-INFO: 2024/09/16 17:20:29 logger.go:37: vizio.freemovies CTV Website not found in response
-INFO: 2024/09/16 17:20:29 logger.go:37: vizio.watchfree.bobross CTV Website not found in response
-INFO: 2024/09/16 17:20:29 logger.go:37: com.distro+tv.fireos CTV Website not found in response
-INFO: 2024/09/16 17:20:30 logger.go:37: com.comcast.sortit CTV Website not found in response
-INFO: 2024/09/16 17:20:30 logger.go:37: 51529 Failed to crawl domain failed to fetch URL: Get "http://vestorm.com/ads.txt": dial tcp: lookup vestorm.com on 127.0.0.53:53: no such host
-INFO: 2024/09/16 17:20:30 logger.go:37: 329502124 Failed to crawl domain failed to fetch URL: Get "http://www.seattletimes.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-INFO: 2024/09/16 17:20:30 logger.go:37: 376038666 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:30 logger.go:37: 51529 Failed to crawl domain failed to fetch URL: Get "http://vestorm.com/app-ads.txt": dial tcp: lookup vestorm.com on 127.0.0.53:53: no such host
-INFO: 2024/09/16 17:20:31 logger.go:37: 376038666 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:31 logger.go:37: B01MQ116BJ CTV Website not found in response
-INFO: 2024/09/16 17:20:31 logger.go:37: 329504506 Failed to crawl domain failed to fetch URL: Get "http://www.easyhoroscope.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-INFO: 2024/09/16 17:20:31 logger.go:37: 330794740 Failed to crawl domain failed to fetch URL: Get "http://cazualgamez.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-INFO: 2024/09/16 17:20:31 logger.go:37: 8472 Failed to crawl domain failed to fetch URL: Get "http://www.hoocash.in/ads.txt": dial tcp: lookup www.hoocash.in on 127.0.0.53:53: no such host
-INFO: 2024/09/16 17:20:31 logger.go:37: com.videotron.letter_wizard CTV Website not found in response
-INFO: 2024/09/16 17:20:31 logger.go:37: 8472 Failed to crawl domain failed to fetch URL: Get "http://www.hoocash.in/app-ads.txt": dial tcp: lookup www.hoocash.in on 127.0.0.53:53: no such host
-INFO: 2024/09/16 17:20:32 logger.go:37: samsung.scn.209 CTV Website not found in response
-INFO: 2024/09/16 17:20:32 logger.go:37: 329504506 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:32 logger.go:37: 75474098 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:32 logger.go:37: 90767 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:32 logger.go:37: 62024 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:33 logger.go:37: com.champion.cubes Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:33 logger.go:37: com.cardgame.solitaire.fishdom Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:33 logger.go:37: 957979 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:34 logger.go:37: 1468608983 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:34 logger.go:37: 38705 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:34 logger.go:37: 957979 Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:34 logger.go:37: 75474098 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:35 logger.go:37: 38705 Failed to crawl domain non-200 status code received: 404
-INFO: 2024/09/16 17:20:36 logger.go:37: 47423 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:36 logger.go:37: 47423 Failed to crawl domain non-200 status code received: 403
-INFO: 2024/09/16 17:20:37 logger.go:37: com.teleformula.live Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:39 logger.go:37: com.teleformula.live Failed to crawl domain response does not look like an ads.txt file
-INFO: 2024/09/16 17:20:40 logger.go:37: 329502124 Failed to crawl domain failed to fetch URL: Get "http://www.seattletimes.com/app-ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-INFO: 2024/09/16 17:20:45 logger.go:37: 330794740 Failed to crawl domain failed to fetch URL: Get "http://cazualgamez.com/app-ads.txt": dial tcp: lookup cazualgamez.com on 127.0.0.53:53: server misbehaving
+INFO: 2024/09/20 18:05:53 logger.go:37: aimaster.aiiioky.yis Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:05:53 logger.go:37: ai.photo.wallpaper.wonder.art Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:05:53 logger.go:37: ai.photo.generator.filter.art Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:05:53 logger.go:37: Air Hockey Challenge Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:05:55 logger.go:37: ai.photo.editor.faceswap.avatar Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:55 logger.go:37: ai.photo.enhancer.photoclear Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:05:55 logger.go:37: air.au.com.minimega.bonza Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:55 logger.go:37: ai.photo.enhancer.photoclear Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:05:56 logger.go:37: air.au.com.minimega.bonza Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:56 logger.go:37: aichat.chatgpt Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:56 logger.go:37: aigirlfriend.ai.girlfriend Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:56 logger.go:37: air.au.com.minimega.bonzanatgeo Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:57 logger.go:37: air.au.com.minimega.bonzajigsaw Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:58 logger.go:37: air.au.com.metro.DumbWaysToDie2 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:05:59 logger.go:37: air.biz.rightshift.clickfun.casino Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:00 logger.go:37: air.com.befunky.cemrtc Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:06:00 logger.go:37: air.com.befunky.cemrtc.vbnm Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:06:00 logger.go:37: air.com.befunky.ghjfgj Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:06:00 logger.go:37: air.com.bettergamestudios.empirefourkingdoms Mobile App Android Invalid Google Bundle
+INFO: 2024/09/20 18:06:03 logger.go:37: air.com.and.games505.gemsofwar Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:04 logger.go:37: air.com.airapport.steampunkidlespinner Failed to crawl domain failed to fetch URL: Get "/ads.txt": stopped after 3 redirects
+INFO: 2024/09/20 18:06:05 logger.go:37: 6475413304 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:05 logger.go:37: air.com.and.games505.gemsofwar Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:05 logger.go:37: 6475413304 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:06 logger.go:37: 314498713 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:07 logger.go:37: 314487667 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:07 logger.go:37: 314498713 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:07 logger.go:37: 314716233 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:07 logger.go:37: 314716233 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:07 logger.go:37: 316050001 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:09 logger.go:37: 315241195 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:09 logger.go:37: 315019111 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:09 logger.go:37: 315733642 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:10 logger.go:37: 315733642 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:10 logger.go:37: 315297855 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:11 logger.go:37: 314952906 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:15 logger.go:37: 316025912 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:15 logger.go:37: 317547865 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:19 logger.go:37: 319881193 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:19 logger.go:37: 319740707 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:20 logger.go:37: 320540355 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:21 logger.go:37: 319740707 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:22 logger.go:37: 318168623 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:22 logger.go:37: 320969612 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:23 logger.go:37: 321756558 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:24 logger.go:37: 318168623 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:24 logger.go:37: 324021126 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:25 logger.go:37: 323108917 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:25 logger.go:37: 323235598 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:27 logger.go:37: 323237234 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:32 logger.go:37: 321916506 Failed to crawl domain failed to fetch URL: Get "http://www.zynga.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:06:34 logger.go:37: 325185696 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:35 logger.go:37: 324458663 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:38 logger.go:37: 326647139 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:39 logger.go:37: 324335340 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:40 logger.go:37: 325924444 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:41 logger.go:37: 325814626 Failed to crawl domain failed to fetch URL: Get "https://sellers.sapo.pt/ads.txt": stopped after 3 redirects
+INFO: 2024/09/20 18:06:42 logger.go:37: 325814626 Failed to crawl domain failed to fetch URL: Get "https://sellers.sapo.pt/app-ads.txt": stopped after 3 redirects
+INFO: 2024/09/20 18:06:42 logger.go:37: 324335340 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:43 logger.go:37: 326299304 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:43 logger.go:37: 327125649 Failed to crawl domain failed to fetch URL: Get "https://www.dishnetwork.com/ads.txt": tls: failed to verify certificate: x509: certificate is valid for blockbuster.com, www.blockbuster.com, d2mediasales.com, dishlatino.com, dishwireless.com, dishpuertorico.com, airtv.net, dish.com, latino.dish.com, www.d2mediasales.com, media.dish.com, careers.dish.com, www.dishpuertorico.com, www.airtv.net, www.dishlatino.com, itv.dish.com, puertorico.dish.com, www.dish.com, dishbusiness.com, www.dishbusiness.com, not www.dishnetwork.com
+INFO: 2024/09/20 18:06:44 logger.go:37: 327205553 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:44 logger.go:37: 327125649 Failed to crawl domain failed to fetch URL: Get "https://www.dishnetwork.com/app-ads.txt": tls: failed to verify certificate: x509: certificate is valid for blockbuster.com, www.blockbuster.com, d2mediasales.com, dishlatino.com, dishwireless.com, dishpuertorico.com, airtv.net, dish.com, latino.dish.com, www.d2mediasales.com, media.dish.com, careers.dish.com, www.dishpuertorico.com, www.airtv.net, www.dishlatino.com, itv.dish.com, puertorico.dish.com, www.dish.com, dishbusiness.com, www.dishbusiness.com, not www.dishnetwork.com
+INFO: 2024/09/20 18:06:45 logger.go:37: 327205553 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:46 logger.go:37: 328412701 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:46 logger.go:37: 328217517 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:47 logger.go:37: 328412701 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:49 logger.go:37: 328415391 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:49 logger.go:37: 329504506 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:50 logger.go:37: 329848247 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:50 logger.go:37: 328415391 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:51 logger.go:37: 331213753 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:51 logger.go:37: 329848247 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:06:51 logger.go:37: 329504506 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:06:52 logger.go:37: 331794412 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:06:54 logger.go:37: 330846874 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:55 logger.go:37: 330846874 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:06:57 logger.go:37: 329502124 Failed to crawl domain failed to fetch URL: Get "http://www.seattletimes.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:00 logger.go:37: 330794740 Failed to crawl domain failed to fetch URL: Get "http://cazualgamez.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:03 logger.go:37: 331307981 Failed to crawl domain failed to fetch URL: Get "https://www.tgcom24.mediaset.it/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:03 logger.go:37: 331786748 Failed to crawl domain failed to fetch URL: Get "http://edition.cnn.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:03 logger.go:37: 331302745 Failed to crawl domain failed to fetch URL: Get "https://listonic.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:04 logger.go:37: 331605976 Failed to crawl domain failed to fetch URL: Get "http://www.nbcnewyork.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:04 logger.go:37: 331307981 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:04 logger.go:37: 331796811 Failed to crawl domain failed to fetch URL: Get "http://www.nbcbayarea.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:07 logger.go:37: 330794740 Failed to crawl domain failed to fetch URL: Get "http://cazualgamez.com/app-ads.txt": dial tcp: lookup cazualgamez.com on 127.0.0.53:53: server misbehaving
+INFO: 2024/09/20 18:07:07 logger.go:37: 329502124 Failed to crawl domain failed to fetch URL: Get "http://www.seattletimes.com/app-ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:09 logger.go:37: 332534830 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:07:10 logger.go:37: 332116103 Failed to crawl domain failed to fetch URL: Get "https://a.pub.network/swingbyswing-com/ads.txt": stopped after 3 redirects
+INFO: 2024/09/20 18:07:10 logger.go:37: 332116103 Failed to crawl domain failed to fetch URL: Get "https://a.pub.network/swingu-com/app-ads.txt": stopped after 3 redirects
+INFO: 2024/09/20 18:07:11 logger.go:37: 332499574 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:12 logger.go:37: 332499574 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:15 logger.go:37: 334682375 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:07:19 logger.go:37: 336435697 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:07:19 logger.go:37: 336474791 Mobile App IOS Invalid iOS Bundle
+INFO: 2024/09/20 18:07:20 logger.go:37: 335436553 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:26 logger.go:37: 335624387 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:07:26 logger.go:37: 335624387 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:07:27 logger.go:37: 335249553 Failed to crawl domain failed to fetch URL: Get "http://www.towermadness.com/ads.txt": dial tcp: lookup www.towermadness.com on 127.0.0.53:53: server misbehaving
+INFO: 2024/09/20 18:07:29 logger.go:37: 335445524 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:07:31 logger.go:37: 336580901 Failed to crawl domain failed to fetch URL: Get "https://wildcardstudios.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:31 logger.go:37: 336978041 Failed to crawl domain failed to fetch URL: Get "http://www.dailymotion.com/ads.txt": read tcp 172.168.1.249:41986->195.8.215.137:80: read: connection reset by peer
+INFO: 2024/09/20 18:07:31 logger.go:37: 336475436 Failed to crawl domain failed to fetch URL: Get "https://www.tuttojuve.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:32 logger.go:37: 336978041 Failed to crawl domain failed to fetch URL: Get "https://dailymotion.com/app-ads.txt": read tcp 172.168.1.249:49828->195.8.215.136:443: read: connection reset by peer
+INFO: 2024/09/20 18:07:33 logger.go:37: 336693856 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:07:37 logger.go:37: 335249553 Failed to crawl domain failed to fetch URL: Get "http://www.towermadness.com/app-ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:38 logger.go:37: 336829635 Failed to crawl domain failed to fetch URL: Get "http://www.windfinder.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:39 logger.go:37: 336914733 Failed to crawl domain failed to fetch URL: Get "https://wibc.com/ads.txt": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+INFO: 2024/09/20 18:07:42 logger.go:37: 337710261 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:43 logger.go:37: 337710261 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:44 logger.go:37: 338764030 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:45 logger.go:37: 338088432 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:45 logger.go:37: 338083706 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:07:47 logger.go:37: 339532909 Failed to crawl domain failed to fetch URL: Get "https://www.redbox.com/ads.txt": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: current time 2024-09-20T18:07:47+05:30 is after 2024-07-23T23:59:59Z
+INFO: 2024/09/20 18:07:47 logger.go:37: 338711072 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:07:47 logger.go:37: 339532909 Failed to crawl domain failed to fetch URL: Get "https://www.redbox.com/app-ads.txt": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: current time 2024-09-20T18:07:47+05:30 is after 2024-07-23T23:59:59Z
+INFO: 2024/09/20 18:07:49 logger.go:37: 340021100 Failed to crawl domain failed to fetch URL: Get "http://online.welt.de/ads.txt": dial tcp: lookup online.welt.de on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:07:49 logger.go:37: 340021100 Failed to crawl domain failed to fetch URL: Get "http://online.welt.de/app-ads.txt": dial tcp: lookup online.welt.de on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:07:49 logger.go:37: 338711072 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:07:51 logger.go:37: 341089820 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:52 logger.go:37: 340372401 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:55 logger.go:37: com.animeworld.app_pro2 CTV Website not found in response
+INFO: 2024/09/20 18:07:55 logger.go:37: com.best+sushi+diy.rokuos CTV Website not found in response
+INFO: 2024/09/20 18:07:56 logger.go:37: samsung.tv.plus.600938 CTV Website not found in response
+INFO: 2024/09/20 18:07:57 logger.go:37: vizio.freemovies CTV Website not found in response
+INFO: 2024/09/20 18:07:57 logger.go:37: 51529 Failed to crawl domain failed to fetch URL: Get "http://vestorm.com/ads.txt": dial tcp: lookup vestorm.com on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:07:57 logger.go:37: 51529 Failed to crawl domain failed to fetch URL: Get "http://vestorm.com/app-ads.txt": dial tcp: lookup vestorm.com on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:07:58 logger.go:37: com.videotron.letter_wizard CTV Website not found in response
+INFO: 2024/09/20 18:07:58 logger.go:37: 342138881 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:59 logger.go:37: 341894188 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:07:59 logger.go:37: 341541599 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:00 logger.go:37: 341532096 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:08:00 logger.go:37: samsung.scn.209 CTV Website not found in response
+INFO: 2024/09/20 18:08:01 logger.go:37: com.champion.cubes Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:01 logger.go:37: es.tvgam.2048Maniac.vidaa CTV Website not found in response
+INFO: 2024/09/20 18:08:01 logger.go:37: 90767 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:02 logger.go:37: 1468608983 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:03 logger.go:37: firetv.fawesome.tv CTV Website not found in response
+INFO: 2024/09/20 18:08:03 logger.go:37: com.distro+tv.fireos CTV Website not found in response
+INFO: 2024/09/20 18:08:04 logger.go:37: 44281 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:04 logger.go:37: B00J7KLCUQ CTV Website not found in response
+INFO: 2024/09/20 18:08:04 logger.go:37: vizio.watchfree.bobross CTV Website not found in response
+INFO: 2024/09/20 18:08:05 logger.go:37: 44281 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:05 logger.go:37: com.cardgame.solitaire.fishdom Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:05 logger.go:37: 8472 Failed to crawl domain failed to fetch URL: Get "http://www.hoocash.in/ads.txt": dial tcp: lookup www.hoocash.in on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:08:06 logger.go:37: com.teleformula.live Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:08:07 logger.go:37: 8472 Failed to crawl domain failed to fetch URL: Get "http://www.hoocash.in/app-ads.txt": dial tcp: lookup www.hoocash.in on 127.0.0.53:53: no such host
+INFO: 2024/09/20 18:08:07 logger.go:37: 38705 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:07 logger.go:37: 62024 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:07 logger.go:37: 957979 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:08:07 logger.go:37: com.teleformula.live Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:08:08 logger.go:37: B01MQ116BJ CTV Website not found in response
+INFO: 2024/09/20 18:08:08 logger.go:37: 957979 Failed to crawl domain response does not look like an ads.txt file
+INFO: 2024/09/20 18:08:08 logger.go:37: 38705 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:08 logger.go:37: com.comcast.sortit CTV Website not found in response
+INFO: 2024/09/20 18:08:08 logger.go:37: 376038666 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:08:09 logger.go:37: 376038666 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:08:10 logger.go:37: 47423 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:08:10 logger.go:37: 47423 Failed to crawl domain non-200 status code received: 403
+INFO: 2024/09/20 18:08:11 logger.go:37: 75474098 Failed to crawl domain non-200 status code received: 404
+INFO: 2024/09/20 18:08:14 logger.go:37: 75474098 Failed to crawl domain non-200 status code received: 404

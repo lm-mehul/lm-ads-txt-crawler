@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"time"
+
+	"github.com/lemmamedia/ads-txt-crawler/handler"
 )
 
 type Service struct {
@@ -18,6 +20,15 @@ func NewService(db *sql.DB) *Service {
 func (s *Service) Start() {
 
 	start := time.Now()
+
+	// Populating DB with bundles from master sheet
+	handler.MigrateBundlesFromMasterSheet(s.db)
+
+	fmt.Printf("\n---------------------------------------------------------------------------------\n")
+	fmt.Printf("Bundle loaded in database successfully.\n")
+	fmt.Printf("---------------------------------------------------------------------------------\n")
+
+	// handler.ScheduleCombinedCRON(s.db)
 
 	// Print the total execution time
 	elapsed := time.Since(start)

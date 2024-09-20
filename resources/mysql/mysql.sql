@@ -1,7 +1,7 @@
 
 CREATE DATABASE IF NOT EXISTS `lm_teda_crawler`;
 
-0 . Bundles :
+-- 0 . Bundles :
 
 CREATE TABLE bundles (
     id INT NOT NULL AUTO_INCREMENT,
@@ -12,17 +12,8 @@ CREATE TABLE bundles (
     UNIQUE KEY unique_bundle_category (bundle, category)
 );
 
-CREATE TABLE test_bundles (
-    id INT NOT NULL AUTO_INCREMENT,
-    bundle VARCHAR(512) NOT NULL,
-    category VARCHAR(255) NOT NULL,
-    creation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-    UNIQUE KEY unique_bundle_category (bundle, category)
-);
 
-
-1 . Failed Bundles :
+-- 1 . Failed Bundles :
 
 CREATE TABLE failed_bundles (
     id INT NOT NULL AUTO_INCREMENT,
@@ -34,7 +25,7 @@ CREATE TABLE failed_bundles (
 );
 
 
-2. Crawled Bundles :
+-- 2. Crawled Bundles :
 
 CREATE TABLE crawled_bundles (
     id INT NOT NULL AUTO_INCREMENT,
@@ -52,7 +43,7 @@ CREATE TABLE crawled_bundles (
 );
 
 
-3. Lemma Entries :
+-- 3. Lemma Entries :
 
 CREATE TABLE `lemma_entries` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -67,7 +58,7 @@ CREATE TABLE `lemma_entries` (
   UNIQUE KEY `unique_bundle_category_lemma` (`bundle`(191),`category`(191),`Lemma_Direct`(100),`Lemma_Reseller`(100))
 );
 
-4. Demand Table
+-- 4. Demand Table
 
 CREATE TABLE bundle_demand_lines (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,16 +73,14 @@ CREATE TABLE bundle_demand_lines (
 
 
 
-5. Penetration insights Table :
+-- 5. Penetration insights Table :
 
-Inventory Type  
-Ios inventory int 
-android inventory int
-Web   inventory int
-CTV   inventory int
+-- Inventory Type  
+-- Ios inventory int 
+-- android inventory int
+-- Web   inventory int
+-- CTV   inventory int
 
-example : 
-Lemma Direct | 75 | 45 | 32 | 23
-Lemma Reseller | 56 | 45 | 12 | 12
-
-6. 
+-- example : 
+-- Lemma Direct | 75 | 45 | 32 | 23
+-- Lemma Reseller | 56 | 45 | 12 | 12

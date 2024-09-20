@@ -202,6 +202,13 @@ func processFetchedBundlesForCombinedCRON(db *sql.DB, fetchedBundle models.Bundl
 
 func ScheduleCombinedCRON(db *sql.DB) {
 
+	repository.ClearTableData(db, "crawled_bundles")
+	repository.ClearTableData(db, "failed_bundles")
+	repository.ClearTableData(db, "lemma_entries")
+	repository.ClearTableData(db, "bundle_demand_lines")
+
+	AdsTxtDemandLines = service.ReadAdsTxtDemandLines()
+
 	fmt.Printf("---------------------------------------------------------------------------------\n")
 	fmt.Printf("Fetching ScheduleCombinedCRON...\n")
 	fmt.Printf("---------------------------------------------------------------------------------\n")
@@ -224,7 +231,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	var wg sync.WaitGroup
 
 	// Start worker pool
-	numWorkers := 3 // Number of workers can be adjusted based on system capability
+	numWorkers := 10 // Number of workers can be adjusted based on system capability
 	for i := 0; i < numWorkers; i++ {
 		wg.Add(1)
 		go func() {
@@ -285,14 +292,8 @@ func ScheduleCombinedCRON(db *sql.DB) {
 
 	// Save demand line entries in batches
 	if len(allDemandLines) > 0 {
-		models.BatchSave(db, allDemandLines, batchSize, repository.SaveDemandLinesResultInDB, "lemma lines inventory")
+		models.BatchSave(db, allDemandLines, batchSize, repository.SaveDemandLinesResultInDB, "Demand Lines inventory")
 	}
-	// if len(allDemandLines) > 0 {
-	// 	err := repository.SaveDemandLinesResultInDB(db, allDemandLines)
-	// 	if err != nil {
-	// 		logger.Error("Error saving demand lines in DB: %v", err)
-	// 	}
-	// }
 
 	// Print summary
 

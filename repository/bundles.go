@@ -92,3 +92,19 @@ func SaveBundlesFromMasterSheet(db *sql.DB) error {
 	}
 	return nil
 }
+
+func SaveWebBundlesFromMasterSheet(db *sql.DB) error {
+	query := `
+		INSERT INTO bundles (bundle, category)
+		SELECT domain,'Web' AS category
+		FROM lm_teda.domain;
+	`
+
+	// Execute the query
+	_, err := db.Exec(query)
+	if err != nil {
+		log.Printf("Error executing bundles data insert: %v", err)
+		return err
+	}
+	return nil
+}

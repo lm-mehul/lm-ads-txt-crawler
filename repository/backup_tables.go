@@ -7,10 +7,10 @@ import (
 )
 
 // DropTableIfExists drops a table if it exists in the database.
-func DropTableIfExists(db *sql.DB, tableName string) error {
+func ClearTableData(db *sql.DB, tableName string) error {
 	// Initialize a buffer to build the SQL query
 	var buff bytes.Buffer
-	buff.WriteString("DROP TABLE IF EXISTS ")
+	buff.WriteString("DELETE FROM ")
 	buff.WriteString(tableName)
 
 	// Prepare the query for execution
@@ -19,11 +19,11 @@ func DropTableIfExists(db *sql.DB, tableName string) error {
 	// Execute the query
 	_, err := db.Exec(query)
 	if err != nil {
-		log.Printf("Error dropping table %s: %v", tableName, err)
+		log.Printf("Error deleting data from table %s: %v", tableName, err)
 		return err
 	}
 
-	log.Printf("Table %s dropped successfully if it existed.", tableName)
+	log.Printf("Table %s data cleared successfully if it existed.", tableName)
 	return nil
 }
 
