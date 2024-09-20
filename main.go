@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/lemmamedia/ads-txt-crawler/models"
-	"github.com/lemmamedia/ads-txt-crawler/service"
+	"github.com/lemmamedia/ads-txt-crawler/server"
 )
 
 func main() {
@@ -17,6 +17,6 @@ func main() {
 	}
 	defer db.Close()
 
-	s := service.NewService(db)
+	s := server.NewService(db)
 	s.Start()
 }

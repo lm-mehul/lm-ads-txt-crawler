@@ -1,2 +1,5 @@
-freewheel.tv, 1585652, RESELLER
-freewheel.tv, 1585681, RESELLER 
+sovrn.com, 268479, DIRECT
+smaato.com,1100044650,RESELLER
+indexexchange.com, 187780, RESELLER
+advertising.com, 28816, RESELLER
+advertising.com, 28816, RESELLER

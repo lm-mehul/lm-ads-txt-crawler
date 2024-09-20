@@ -1,0 +1,2 @@
+// Purpose: Ignore log files
+logs/*.log
