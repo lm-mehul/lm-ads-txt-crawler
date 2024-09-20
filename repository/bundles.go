@@ -3,6 +3,7 @@ package repository
 import (
 	"bytes"
 	"database/sql"
+	"fmt"
 	"log"
 	"strings"
 
@@ -106,5 +107,46 @@ func SaveWebBundlesFromMasterSheet(db *sql.DB) error {
 		log.Printf("Error executing bundles data insert: %v", err)
 		return err
 	}
+	return nil
+}
+
+// Function to execute the query and display results
+func DisplayCategoryCounts(db *sql.DB) error {
+	// Define the query
+	query := `SELECT category, COUNT(*) FROM bundles GROUP BY category;`
+
+	// Execute the query
+	rows, err := db.Query(query)
+	if err != nil {
+		return fmt.Errorf("failed to execute query: %v", err)
+	}
+	defer rows.Close()
+
+	// Variables to hold the result
+	var category string
+	var count int
+
+	// Print the header
+	fmt.Printf("+--------------------+----------+\n")
+	fmt.Printf("| Category           | Count    |\n")
+	fmt.Printf("+--------------------+----------+\n")
+
+	// Loop through the result set and display the output
+	for rows.Next() {
+		err := rows.Scan(&category, &count)
+		if err != nil {
+			return fmt.Errorf("failed to scan row: %v", err)
+		}
+		fmt.Printf("| %-18s | %-8d |\n", category, count)
+	}
+
+	// Print the footer
+	fmt.Printf("+--------------------+----------+\n")
+
+	// Check for errors encountered during iteration
+	if err := rows.Err(); err != nil {
+		return fmt.Errorf("error during row iteration: %v", err)
+	}
+
 	return nil
 }

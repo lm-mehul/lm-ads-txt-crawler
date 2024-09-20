@@ -1,8 +1,0 @@
-ERROR: 2024/09/20 18:08:14 logger.go:42: Successfully saved %s batch %d (%d rows)
- crawled bundles 1 198
-ERROR: 2024/09/20 18:08:14 logger.go:42: Successfully saved %s batch %d (%d rows)
- failed bundles 1 70
-ERROR: 2024/09/20 18:08:14 logger.go:42: Successfully saved %s batch %d (%d rows)
- lemma lines inventory 1 116
-ERROR: 2024/09/20 18:08:14 logger.go:42: Successfully saved %s batch %d (%d rows)
- Demand Lines inventory 1 126

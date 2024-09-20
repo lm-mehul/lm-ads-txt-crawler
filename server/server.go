@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/lemmamedia/ads-txt-crawler/handler"
+	"github.com/lemmamedia/ads-txt-crawler/repository"
 )
 
 type Service struct {
@@ -28,7 +29,9 @@ func (s *Service) Start() {
 	fmt.Printf("Bundle loaded in database successfully.\n")
 	fmt.Printf("---------------------------------------------------------------------------------\n")
 
-	// handler.ScheduleCombinedCRON(s.db)
+	_ = repository.DisplayCategoryCounts(s.db)
+
+	handler.ScheduleCombinedCRON(s.db)
 
 	// Print the total execution time
 	elapsed := time.Since(start)
