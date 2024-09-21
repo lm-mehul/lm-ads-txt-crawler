@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+	"fmt"
 	"math"
 
 	"github.com/lemmamedia/ads-txt-crawler/logger"
@@ -23,9 +24,7 @@ func BatchSave[T any](db *sql.DB, data []T, batchSize int, saveFunc func(*sql.DB
 		batch := data[start:end]
 		err := saveFunc(db, batch)
 		if err != nil {
-			logger.Error("Error saving %s batch %d: %v\n", dataType, i+1, err)
-		} else {
-			logger.Error("Successfully saved %s batch %d (%d rows)\n", dataType, i+1, len(batch))
+			logger.Error(fmt.Sprintf("Error saving %s batch %d: %v\n", dataType, i+1, err))
 		}
 	}
 }

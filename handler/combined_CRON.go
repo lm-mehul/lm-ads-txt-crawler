@@ -216,13 +216,13 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	const batchSize = 1000
 
 	// Fetch bundles from DB
-	// tempBundles := models.PopulateSampleBundles()
+	tempBundles := models.PopulateSampleBundles()
 
-	tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
-	if err != nil {
-		logger.Error("Error fetching bundles from DB: %v", err)
-		return
-	}
+	// tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
+	// if err != nil {
+	// 	logger.Error("Error fetching bundles from DB: %v", err)
+	// 	return
+	// }
 
 	totalBundles := len(tempBundles)
 
@@ -231,7 +231,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	var wg sync.WaitGroup
 
 	// Start worker pool
-	numWorkers := 10 // Number of workers can be adjusted based on system capability
+	numWorkers := 15 // Number of workers can be adjusted based on system capability
 	for i := 0; i < numWorkers; i++ {
 		wg.Add(1)
 		go func() {
@@ -255,7 +255,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	}()
 
 	// Aggregating results
-	var crawledBundlesCount, failedBundlesCount, lemmaLinesCount int
+	var crawledBundlesCount, failedBundlesCount, lemmaLinesCount, demandLinesCount int
 	var allCrawledBundles, allFailedBundles []models.BundleInfo
 	var allLemmaLines []models.LemmaEntry
 	var allDemandLines []models.DemandLinesEntry
@@ -264,6 +264,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 		crawledBundlesCount += len(result.CrawledBundles)
 		failedBundlesCount += len(result.FailedBundles)
 		lemmaLinesCount += len(result.LemmaLines)
+		demandLinesCount += len(result.DemandLines)
 		allCrawledBundles = append(allCrawledBundles, result.CrawledBundles...)
 		allFailedBundles = append(allFailedBundles, result.FailedBundles...)
 		allLemmaLines = append(allLemmaLines, result.LemmaLines...)
@@ -302,6 +303,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	fmt.Printf("Total crawled bundles: %d\n", crawledBundlesCount)
 	fmt.Printf("Total failed bundles: %d\n", failedBundlesCount)
 	fmt.Printf("Total lemma lines: %d\n", lemmaLinesCount)
+	fmt.Printf("Total demand lines: %d\n", demandLinesCount)
 	fmt.Printf("\n\n---------------------------------------------------------------------------------\n")
 	fmt.Printf("Total Request Timeout Count: %d\n", constant.RequestTimeoutCount)
 	fmt.Printf("---------------------------------------------------------------------------------\n")
