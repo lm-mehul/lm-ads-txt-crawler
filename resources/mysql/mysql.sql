@@ -62,7 +62,7 @@ CREATE TABLE `lemma_entries` (
 
 CREATE TABLE bundle_demand_lines (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    bundle_id INT NOT NULL,
+    bundle_id varchar(412) NOT NULL,
     `category` varchar(255) NOT NULL,
     domain VARCHAR(512) NOT NULL,
     demand_line VARCHAR(255) NOT NULL,
