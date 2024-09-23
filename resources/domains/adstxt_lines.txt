@@ -1,5 +1,26 @@
-sovrn.com, 268479, DIRECT
-smaato.com,1100044650,RESELLER
-indexexchange.com, 187780, RESELLER
-advertising.com, 28816, RESELLER
-advertising.com, 28816, RESELLER
+pubmatic.com, 156494, RESELLER
+onetag.com, 8d4bbebb8fa701e, DIRECT
+freewheel.tv, 1585652, RESELLER
+freewheel.tv, 1585681, RESELLER
+video.unrulymedia.com, 8167205979129043832, RESELLER
+growzee.io, 031ae447-d523-4804-b4c7-be282ad874c3, DIRECT
+instal.com, 031ae447-d523-4804-b4c7-be282ad874c3, DIRECT
+boldscreen.com, 765167, DIRECT
+boldscreen.com, 46220, DIRECT
+unifd.la, 765167, DIRECT
+unifd.la, 46220, DIRECT
+advangelists.com, 57b9c5d42a8fe216162345a05b6e6afb, RESELLER
+magicmedia.ae, 6f828808, DIRECT
+e-planning.net,608359bb987625b2,DIRECT,c1ba615865ed87b2
+connatix.com, 1742365173855029, DIRECT
+appnexus.com, 2007, RESELLER
+affinity.com, 965, RESELLER 
+smartadserver.com, 3564 , RESELLER
+Contextweb.com,563169,RESELLER
+Contextweb.com, 562930, RESELLER
+thegermanemedia.com, 546, DIRECT, 6716225838534735
+smartadserver.com , 4938, RESELLER, 060d053dcf45cbf3
+pubmatic.com , 164928,  RESELLER, 5d62403b186f2ace
+freewheel.tv , 1607251, RESELLER
+lijit.com , 509119, DIRECT, fafdf38b16bf6b2b
+Vidoomy.com , 8700140, DIRECT
