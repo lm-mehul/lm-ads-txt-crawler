@@ -1,2 +1,3 @@
 // Purpose: Ignore log files
 logs/*.log
+resources/domains/adstxt_lines.txt
