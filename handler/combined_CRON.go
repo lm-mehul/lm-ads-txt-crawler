@@ -207,7 +207,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	repository.ClearTableData(db, "lemma_entries")
 	repository.ClearTableData(db, "bundle_demand_lines")
 
-	AdsTxtDemandLines = service.ReadAdsTxtDemandLines()
+	AdsTxtDemandLines = service.ReadAdsTxtDemandLines(db)
 
 	fmt.Printf("---------------------------------------------------------------------------------\n")
 	fmt.Printf("Fetching ScheduleCombinedCRON...\n")
@@ -216,13 +216,13 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	const batchSize = 1000
 
 	// Fetch bundles from DB
-	// tempBundles := models.PopulateSampleBundles()
+	tempBundles := models.PopulateSampleBundles()
 
-	tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
-	if err != nil {
-		logger.Error("Error fetching bundles from DB: %v", err)
-		return
-	}
+	// tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
+	// if err != nil {
+	// 	logger.Error("Error fetching bundles from DB: %v", err)
+	// 	return
+	// }
 
 	totalBundles := len(tempBundles)
 
