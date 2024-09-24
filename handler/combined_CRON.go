@@ -207,7 +207,7 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	repository.ClearTableData(db, "lemma_entries")
 	repository.ClearTableData(db, "bundle_demand_lines")
 
-	AdsTxtDemandLines = service.ReadAdsTxtDemandLines()
+	AdsTxtDemandLines = service.ReadAdsTxtDemandLines(db)
 
 	fmt.Printf("---------------------------------------------------------------------------------\n")
 	fmt.Printf("Fetching ScheduleCombinedCRON...\n")

@@ -7,27 +7,27 @@ import (
 func PopulateSampleBundles() []BundleInfo {
 	var tempBundles []BundleInfo
 
-	for _, bundle := range AndroidBundles {
-		bundleInfo := BundleInfo{
-			Bundle:   bundle,
-			Category: constant.BUNDLE_MOBILE_ANDROID,
-		}
-		tempBundles = append(tempBundles, bundleInfo)
-	}
-	for _, bundle := range IOSBundles {
-		bundleInfo := BundleInfo{
-			Bundle:   bundle,
-			Category: constant.BUNDLE_MOBILE_IOS,
-		}
-		tempBundles = append(tempBundles, bundleInfo)
-	}
-	for _, bundle := range CTVBundles {
-		bundleInfo := BundleInfo{
-			Bundle:   bundle,
-			Category: constant.BUNDLE_CTV,
-		}
-		tempBundles = append(tempBundles, bundleInfo)
-	}
+	// for _, bundle := range AndroidBundles {
+	// 	bundleInfo := BundleInfo{
+	// 		Bundle:   bundle,
+	// 		Category: constant.BUNDLE_MOBILE_ANDROID,
+	// 	}
+	// 	tempBundles = append(tempBundles, bundleInfo)
+	// }
+	// for _, bundle := range IOSBundles {
+	// 	bundleInfo := BundleInfo{
+	// 		Bundle:   bundle,
+	// 		Category: constant.BUNDLE_MOBILE_IOS,
+	// 	}
+	// 	tempBundles = append(tempBundles, bundleInfo)
+	// }
+	// for _, bundle := range CTVBundles {
+	// 	bundleInfo := BundleInfo{
+	// 		Bundle:   bundle,
+	// 		Category: constant.BUNDLE_CTV,
+	// 	}
+	// 	tempBundles = append(tempBundles, bundleInfo)
+	// }
 	for _, bundle := range WebBundles {
 		bundleInfo := BundleInfo{
 			Bundle:   bundle,
@@ -297,4 +297,6 @@ var CTVBundles = []string{
 	"com.comcast.sortit",
 }
 
-var WebBundles = []string{"https://www.geeksforgeeks.org/", "https://www.moneycontrol.com/"}
+// var WebBundles = []string{"https://www.geeksforgeeks.org/", "https://www.moneycontrol.com/"}
+
+var WebBundles = []string{"indiatimes.com", "ndtv.com", "sanook.com", "detik.com", "udn.com"}

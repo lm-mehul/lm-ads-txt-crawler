@@ -41,3 +41,24 @@ func SaveDemandLinesResultInDB(db *sql.DB, bundles []models.DemandLinesEntry) er
 	}
 	return nil
 }
+
+func GetDemandLinesFromDB(db *sql.DB) ([]string, error) {
+	var demandLines []string
+	query := "SELECT demand_line FROM ads_txt_demand_lines"
+
+	rows, err := db.Query(query)
+	if err != nil {
+		return demandLines, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var line string
+		if err := rows.Scan(&line); err != nil {
+			return demandLines, err
+		}
+		demandLines = append(demandLines, line)
+	}
+
+	return demandLines, nil
+}

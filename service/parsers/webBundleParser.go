@@ -3,6 +3,7 @@ package parsers
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"net/url"
 	"strings"
 
@@ -33,13 +34,16 @@ func extractDomainForWebParser(rawURL string) (string, error) {
 	rawURL = strings.ReplaceAll(rawURL, "%20", "")
 	rawURL = strings.ReplaceAll(rawURL, "%09", "")
 
-	parsedURL, err := url.ParseRequestURI(rawURL)
-	if err != nil {
-		return "", errors.New("Error processing URL")
-	}
+	if strings.HasPrefix(rawURL, "http://") || strings.HasPrefix(rawURL, "https://") {
+		parsedURL, err := url.ParseRequestURI(rawURL)
+		if err != nil {
+			return "", errors.New("Error processing URL")
+		}
 
-	if strings.Contains(rawURL, "/") {
-		return strings.TrimSpace(parsedURL.Host), nil
+		if strings.Contains(rawURL, "/") {
+			fmt.Printf("Host: %v\n", parsedURL.Host)
+			return strings.TrimSpace(parsedURL.Host), nil
+		}
 	}
 
 	return strings.TrimSpace(rawURL), nil

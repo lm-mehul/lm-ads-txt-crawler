@@ -133,7 +133,7 @@ func FetchDemandLinesInventory(db *sql.DB) {
 	fmt.Printf("Demand Lines fetching started...\n")
 	fmt.Printf("---------------------------------------------------------------------------------\n")
 
-	AdsTxtDemandLines = service.ReadAdsTxtDemandLines()
+	AdsTxtDemandLines = service.ReadAdsTxtDemandLines(db)
 
 	fmt.Printf("\nAds.txt Demand Lines loaded successfully in memory...\n%v\n", AdsTxtDemandLines)
 
