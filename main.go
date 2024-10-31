@@ -8,7 +8,6 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/models"
 	"github.com/lemmamedia/ads-txt-crawler/server"
 
-	"net/http"
 	_ "net/http/pprof"
 	"runtime/pprof"
 )
@@ -68,8 +67,8 @@ func main() {
 	s := server.NewService(db)
 	s.Start()
 
-	go func() {
-		log.Println(http.ListenAndServe("localhost:6060", nil))
-	}()
+	// go func() {
+	// 	log.Println(http.ListenAndServe("localhost:6060", nil))
+	// }()
 
 }

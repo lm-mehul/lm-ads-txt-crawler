@@ -225,13 +225,13 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	const batchSize = 1000
 
 	// Fetch bundles from DB
-	tempBundles := models.PopulateSampleBundles()
+	// tempBundles := models.PopulateSampleBundles()
 
-	// tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
-	// if err != nil {
-	// 	logger.Error("Error fetching bundles from DB: %v", err)
-	// 	return
-	// }
+	tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
+	if err != nil {
+		logger.Error("Error fetching bundles from DB: %v", err)
+		return
+	}
 
 	totalBundles = len(tempBundles)
 
