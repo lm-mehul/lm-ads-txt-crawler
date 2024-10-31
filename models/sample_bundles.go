@@ -7,13 +7,13 @@ import (
 func PopulateSampleBundles() []BundleInfo {
 	var tempBundles []BundleInfo
 
-	// for _, bundle := range AndroidBundles {
-	// 	bundleInfo := BundleInfo{
-	// 		Bundle:   bundle,
-	// 		Category: constant.BUNDLE_MOBILE_ANDROID,
-	// 	}
-	// 	tempBundles = append(tempBundles, bundleInfo)
-	// }
+	for _, bundle := range AndroidBundles {
+		bundleInfo := BundleInfo{
+			Bundle:   bundle,
+			Category: constant.BUNDLE_MOBILE_ANDROID,
+		}
+		tempBundles = append(tempBundles, bundleInfo)
+	}
 	// for _, bundle := range IOSBundles {
 	// 	bundleInfo := BundleInfo{
 	// 		Bundle:   bundle,
@@ -28,46 +28,49 @@ func PopulateSampleBundles() []BundleInfo {
 	// 	}
 	// 	tempBundles = append(tempBundles, bundleInfo)
 	// }
-	for _, bundle := range WebBundles {
-		bundleInfo := BundleInfo{
-			Bundle:   bundle,
-			Category: constant.BUNDLE_WEB,
-		}
-		tempBundles = append(tempBundles, bundleInfo)
-	}
+	// for _, bundle := range WebBundles {
+	// 	bundleInfo := BundleInfo{
+	// 		Bundle:   bundle,
+	// 		Category: constant.BUNDLE_WEB,
+	// 	}
+	// 	tempBundles = append(tempBundles, bundleInfo)
+	// }
 	return tempBundles
 }
 
 var AndroidBundles = []string{
-	"ai.photo.editor.faceswap.avatar",
-	"ai.photo.enhancer.ig.tiktok.editor.remini.pixelup.hd.free",
-	"ai.photo.enhancer.photoclear",
-	"ai.photo.generator.filter.art",
-	"ai.photo.wallpaper.wonder.art",
-	"ai.seaart.seeu",
-	"aichat.chatgpt",
-	"aigirlfriend.ai.girlfriend",
-	"aihlmusic.free.music.downloader.musicdownloader",
-	"aimaster.aiiioky.yis",
+	// --------------------------------------------
 	"Air Hockey Challenge",
-	"air.au.com.metro.DumbWaysToDie2",
-	"air.au.com.minimega.bonza",
-	"air.au.com.minimega.bonzajigsaw",
-	"air.au.com.minimega.bonzanatgeo",
-	"air.bg.lan.Monopoli",
-	"air.biz.rightshift.clickfun.casino",
-	"air.br.com.domino.mobile",
-	"air.br.com.megajogos.mobile",
-	"air.com.aceviral.motox3m",
-	"air.com.aceviral.mutantfightingcup2",
-	"air.com.airapport.steampunkidlespinner",
-	"air.com.and.games505.gemsofwar",
-	"air.com.azerion.trollfacequesthorror3",
-	"air.com.beachbumgammon",
-	"air.com.befunky.cemrtc",
-	"air.com.befunky.cemrtc.vbnm",
-	"air.com.befunky.ghjfgj",
-	"air.com.bettergamestudios.empirefourkingdoms",
+	// "air.au.com.metro.DumbWaysToDie2",
+	// "air.bg.lan.Monopoli",
+	// ---------------------------------
+	// "ai.photo.editor.faceswap.avatar",
+	// "ai.photo.enhancer.ig.tiktok.editor.remini.pixelup.hd.free",
+	// "ai.photo.enhancer.photoclear",
+	// "ai.photo.generator.filter.art",
+	// "ai.photo.wallpaper.wonder.art",
+	// "ai.seaart.seeu",
+	// "aichat.chatgpt",
+	// "aigirlfriend.ai.girlfriend",
+	// "aihlmusic.free.music.downloader.musicdownloader",
+	// "aimaster.aiiioky.yis",
+
+	// "air.au.com.minimega.bonza",
+	// "air.au.com.minimega.bonzajigsaw",
+	// "air.au.com.minimega.bonzanatgeo",
+	// "air.biz.rightshift.clickfun.casino",
+	// "air.br.com.domino.mobile",
+	// "air.br.com.megajogos.mobile",
+	// "air.com.aceviral.motox3m",
+	// "air.com.aceviral.mutantfightingcup2",
+	// "air.com.airapport.steampunkidlespinner",
+	// "air.com.and.games505.gemsofwar",
+	// "air.com.azerion.trollfacequesthorror3",
+	// "air.com.beachbumgammon",
+	// "air.com.befunky.cemrtc",
+	// "air.com.befunky.cemrtc.vbnm",
+	// "air.com.befunky.ghjfgj",
+	// "air.com.bettergamestudios.empirefourkingdoms",
 }
 
 var IOSBundles = []string{

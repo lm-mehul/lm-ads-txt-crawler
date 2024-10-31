@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strings"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -15,6 +16,8 @@ import (
 )
 
 func ProcessCTVBundle(db *sql.DB, ctvBundle string) (models.BundleInfo, error) {
+
+	ctvBundle = url.QueryEscape(ctvBundle)
 
 	var bundle models.BundleInfo
 	algoliaURL := `https://awy63wpylf-1.algolianet.com/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.14.2)%3B%20Browser%20(lite)%3B%20angular%20(12.0.5)%3B%20angular-instantsearch%20(4.3.0)%3B%20instantsearch.js%20(4.44.0)%3B%20JS%20Helper%20(3.11.0)&x-algolia-api-key=471f4e22aa833a11ef213cd30c540344&x-algolia-application-id=AWY63WPYLF`

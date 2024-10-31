@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lemmamedia/ads-txt-crawler/constant"
@@ -16,11 +17,25 @@ import (
 	"golang.org/x/net/html"
 )
 
+// Custom client with redirect count check
+var client = &http.Client{
+	Timeout: 10 * time.Second,
+	CheckRedirect: func(req *http.Request, via []*http.Request) error {
+		if len(via) >= 3 { // Limit redirects to 3
+			return fmt.Errorf("stopped after 3 redirects")
+		}
+		return nil // Allow redirect
+	},
+}
+
 func ProcessAndroidBundle(db *sql.DB, androidBundle string) (models.BundleInfo, error) {
 	var bundle models.BundleInfo
 
+	// Sanitize the androidBundle using url.QueryEscape to handle spaces and special characters
+	androidBundle = url.QueryEscape(androidBundle)
 	playStoreURL := fmt.Sprintf("https://play.google.com/store/apps/details?id=%s&hl=en", androidBundle)
-	response, err := http.Get(playStoreURL)
+
+	response, err := client.Get(playStoreURL)
 	if err != nil {
 		return bundle, errors.New("Invalid Google Bundle")
 	}

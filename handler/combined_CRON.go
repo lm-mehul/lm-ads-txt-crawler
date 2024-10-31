@@ -14,6 +14,11 @@ import (
 	"github.com/lemmamedia/ads-txt-crawler/utils"
 )
 
+var (
+	totalBundles = 0
+	count        = 0
+)
+
 type CombinedCRONResult struct {
 	CrawledBundles []models.BundleInfo
 	FailedBundles  []models.BundleInfo
@@ -110,6 +115,10 @@ func workercombinedLines(db *sql.DB, jobs <-chan models.BundleInfo, results chan
 			LemmaLines:     lemmaLines,
 			DemandLines:    demandLines,
 		}
+		if count%10 == 0 {
+			fmt.Printf("NUMBER OF %v BUNDLES are parsed. As in %v completed. XOXO\n", count, (count*100)/totalBundles)
+		}
+		count++
 	}
 }
 
@@ -216,15 +225,15 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	const batchSize = 1000
 
 	// Fetch bundles from DB
-	// tempBundles := models.PopulateSampleBundles()
+	tempBundles := models.PopulateSampleBundles()
 
-	tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
-	if err != nil {
-		logger.Error("Error fetching bundles from DB: %v", err)
-		return
-	}
+	// tempBundles, err := repository.GetBundlesFromDB(db, 0, 0)
+	// if err != nil {
+	// 	logger.Error("Error fetching bundles from DB: %v", err)
+	// 	return
+	// }
 
-	totalBundles := len(tempBundles)
+	totalBundles = len(tempBundles)
 
 	jobs := make(chan models.BundleInfo, batchSize)
 	results := make(chan CombinedCRONResult, batchSize)
@@ -240,19 +249,29 @@ func ScheduleCombinedCRON(db *sql.DB) {
 		}()
 	}
 
+	fmt.Printf("There are total %v bundles\n", totalBundles)
+
 	// Distribute jobs to workers
 	go func() {
 		for i := 0; i < totalBundles; i++ {
 			jobs <- tempBundles[i]
+			if i%100 == 0 {
+				logger.Info("BUNDLE NUMBER - %v parsed\n", i)
+			}
 		}
+
 		close(jobs)
 	}()
 
 	// Collect results
 	go func() {
 		wg.Wait()
-		close(results)
+		defer close(results)
 	}()
+
+	fmt.Printf("---------------------------------------------------------------------------------\n")
+	fmt.Printf("Aggregating results...\n")
+	fmt.Printf("---------------------------------------------------------------------------------\n")
 
 	// Aggregating results
 	var crawledBundlesCount, failedBundlesCount, lemmaLinesCount, demandLinesCount int
@@ -260,7 +279,10 @@ func ScheduleCombinedCRON(db *sql.DB) {
 	var allLemmaLines []models.LemmaEntry
 	var allDemandLines []models.DemandLinesEntry
 
+	resultCount := 0
+
 	for result := range results {
+
 		crawledBundlesCount += len(result.CrawledBundles)
 		failedBundlesCount += len(result.FailedBundles)
 		lemmaLinesCount += len(result.LemmaLines)
@@ -269,6 +291,11 @@ func ScheduleCombinedCRON(db *sql.DB) {
 		allFailedBundles = append(allFailedBundles, result.FailedBundles...)
 		allLemmaLines = append(allLemmaLines, result.LemmaLines...)
 		allDemandLines = append(allDemandLines, result.DemandLines...)
+
+		if resultCount%10 == 0 {
+			fmt.Printf("RESULT CHANNEL - %v channel received. %v & received.\n", resultCount, (resultCount/totalBundles)*100)
+		}
+		resultCount++
 	}
 
 	fmt.Printf("Bundle crawling completed. Please wait for the results to be stored in the database...\n")
@@ -281,20 +308,28 @@ func ScheduleCombinedCRON(db *sql.DB) {
 		models.BatchSave(db, allCrawledBundles, batchSize, repository.SaveCrawledBundlesInDB, "crawled bundles")
 	}
 
+	fmt.Printf("Crawled bundles successfully inserted in the database...\n")
+
 	// Save failed bundles in batches
 	if len(allFailedBundles) > 0 {
 		models.BatchSave(db, allFailedBundles, batchSize, repository.SaveFailedBundlesInDB, "failed bundles")
 	}
+
+	fmt.Printf("Failed bundles successfully inserted in the database...\n")
 
 	// Save lemma entries in batches
 	if len(allLemmaLines) > 0 {
 		models.BatchSave(db, allLemmaLines, batchSize, repository.SaveLemmaEntriesInDB, "lemma lines inventory")
 	}
 
+	fmt.Printf("Lemma lines successfully inserted in the database...\n")
+
 	// Save demand line entries in batches
 	if len(allDemandLines) > 0 {
 		models.BatchSave(db, allDemandLines, batchSize, repository.SaveDemandLinesResultInDB, "Demand Lines inventory")
 	}
+
+	fmt.Printf("Demand lines successfully inserted in the database...\n")
 
 	// Print summary
 

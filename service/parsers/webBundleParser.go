@@ -3,7 +3,6 @@ package parsers
 import (
 	"database/sql"
 	"errors"
-	"fmt"
 	"net/url"
 	"strings"
 
@@ -18,6 +17,8 @@ func ProcessWebBundle(db *sql.DB, webBundle string) (models.BundleInfo, error) {
 
 	var bundle models.BundleInfo
 	var err error
+
+	webBundle = url.QueryEscape(webBundle)
 
 	bundle.Bundle = webBundle
 	bundle.Category = constant.BUNDLE_WEB
@@ -41,7 +42,6 @@ func extractDomainForWebParser(rawURL string) (string, error) {
 		}
 
 		if strings.Contains(rawURL, "/") {
-			fmt.Printf("Host: %v\n", parsedURL.Host)
 			return strings.TrimSpace(parsedURL.Host), nil
 		}
 	}

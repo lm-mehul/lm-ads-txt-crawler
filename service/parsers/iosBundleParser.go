@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -16,6 +17,8 @@ import (
 func ProcessIOSBundle(db *sql.DB, iOSBundle string) (models.BundleInfo, error) {
 	var bundle models.BundleInfo
 
+	// Sanitize the androidBundle using url.QueryEscape to handle spaces and special characters
+	iOSBundle = url.QueryEscape(iOSBundle)
 	url := fmt.Sprintf("https://apps.apple.com/us/app/%s/id%s", iOSBundle, iOSBundle)
 	response, err := http.Head(url)
 	if err != nil {
